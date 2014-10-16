@@ -72,44 +72,51 @@
 				
 				var loaderOBJ = new THREE.OBJLoader();
 				loaderOBJ.load( modelsPath+'/PTELC1B14/model.obj', loaderTableCallback );
-
-				
-					
+	
 				
 				var loaderJSON = new THREE.AssimpJSONLoader();
 				loaderJSON.load( modelsPath+'/pieds/21862/model.json', loaderLegCallback );
 
 				function loaderLegCallback(jsonModel) {
-					var Legs = [];
+					var legs = [],
+					legsGroup = new THREE.Object3D();
 					for (var i = 0; i < 4; i++) {
-						Legs[i] = jsonModel.clone();
-						scene.add(Legs[i]);
+						legs[i] = jsonModel.clone();
+						legsGroup.add(legs[i]);
 					};
 					//positionnement des pieds
-					Legs[0].position.x = 10;
-					Legs[1].position.x = -10;
-					Legs[2].position.x = -30;
-					Legs[3].position.x = 30;
+					legs[0].position.x = -30;
+					legs[1].position.x = -30;
+					legs[2].position.x =  30;
+					legs[3].position.x =  30;
+
+					legs[0].position.z = -30;
+					legs[3].position.z = -30;
+					legs[1].position.z = 30;
+					legs[2].position.z = 30
+
+
+					legs[0].rotation.z =  1.5707963268;
+					legs[1].rotation.z =  3.1415926536;
+					legs[2].rotation.z = -1.5707963268;
+					
+					legsGroup.position.y = -1;
+					scene.add(legsGroup);
 				} 
 
 				function loaderTableCallback(object){
-				textureName = new THREE.Texture();
-				loaderTexture.load( texturesPath+'/882/normalMap.jpg', function ( image ) {
-					textureName.image = image;
-					textureName.needsUpdate = true;
-				} );
-
-					object.traverse( function ( child ) {
-
-						if ( child instanceof THREE.Mesh ) {
-
-							child.material.map = textureName;
-
-						}
-
+					textureName = new THREE.Texture();
+					loaderTexture.load( texturesPath+'/882/normalMap.jpg', function ( image ) {
+						textureName.image = image;
+						textureName.needsUpdate = true;
 					} );
 
-					object.position.y =0;
+					object.traverse( function ( child ) {
+						if ( child instanceof THREE.Mesh ) {
+							child.material.map = textureName;
+						}
+					} );
+
 					scene.add( object );
 
 				} 
