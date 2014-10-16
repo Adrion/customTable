@@ -4,6 +4,8 @@
 			var container, stats;
 			var camera, scene, projector, raycaster, renderer;
 
+			var pressedLeft = 0,pressedRight = 0;
+
 			var mouse = new THREE.Vector2(), INTERSECTED;
 			var radius = 120, theta = 0;
 
@@ -152,7 +154,15 @@
 
 			function render() {
 
-				theta += 0.5;
+				if(pressedRight){
+					theta -= 3;
+				}
+				if(pressedLeft){
+					theta += 3;
+				}
+				else{
+					theta += 0.5;
+				}
 
 				camera.position.x = radius * Math.sin( THREE.Math.degToRad( theta ) );
 				camera.position.y = 50;

@@ -18,21 +18,21 @@ $(document).ready(function(){
     
     function onClickBtnRight(e){
     	e.preventDefault();
-    	console.log('right');
+    	pressedRight = 1;
     }
 
     function onReleaseBtnRight(e){
     	e.preventDefault();
-    	console.log('releaseRight');
+    	pressedRight = 0;
     }
 
     function onClickBtnLeft(e){
     	e.preventDefault();
-    	console.log('left');
+    	pressedLeft = 1;
     }
 
     function onReleaseBtnLeft(e){
     	e.preventDefault();
-    	console.log('releaseLeft');
+    	pressedLeft = 0;
     }
 });
