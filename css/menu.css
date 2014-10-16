@@ -1,0 +1,30 @@
+#menuU2Y{
+	position: absolute;
+	height: 100%;
+	right:0;
+	background-color: white;
+
+	/*Hide for dev*/
+	display: none;
+}
+
+#menuU2Y h2{
+
+}
+
+#menuU2Y ul{
+	padding-left: 20px;
+	padding-right: 20px;
+}
+#menuU2Y ul li{
+	margin-top: 5%!important;
+	list-style: none;
+	padding: 2%;
+	font-size: 1.1em;
+	margin: 0;
+}
+
+#test{
+	position: absolute;
+	right: 40%;
+}

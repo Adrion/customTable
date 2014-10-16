@@ -32,12 +32,6 @@
 
 				var table = new THREE.Object3D();
 
-				var geometry = new THREE.BoxGeometry( 20, 20, 20 );
-
-				var material = new THREE.MeshLambertMaterial({
-			    	map: THREE.ImageUtils.loadTexture('http://www.html5canvastutorials.com/demos/assets/crate.jpg')
-			    });
-				
 				// Load models using the AssimpJSONLoader
 				var loaderTexture = new THREE.ImageLoader();
 				
