@@ -31,7 +31,7 @@
 			var camera, scene, projector, raycaster, renderer;
 
 			var mouse = new THREE.Vector2(), INTERSECTED;
-			var radius = 100, theta = 0;
+			var radius = 120, theta = 0;
 
 			init();
 			animate();
@@ -61,6 +61,8 @@
 				light.position.set( -1, -1, -1 ).normalize();
 				scene.add( light );
 
+				var table = new THREE.Object3D();
+
 				var geometry = new THREE.BoxGeometry( 20, 20, 20 );
 
 				var material = new THREE.MeshLambertMaterial({
@@ -76,6 +78,9 @@
 				
 				var loaderJSON = new THREE.AssimpJSONLoader();
 				loaderJSON.load( modelsPath+'/pieds/21862/model.json', loaderLegCallback );
+
+				table.position.y = 20;
+				scene.add(table);
 
 				function loaderLegCallback(jsonModel) {
 					var legs = [],
@@ -101,10 +106,10 @@
 					legs[2].rotation.z = -1.5707963268;
 					
 					legsGroup.position.y = -1;
-					scene.add(legsGroup);
+					table.add(legsGroup);
 				} 
 
-				function loaderTableCallback(object){
+				function loaderTableCallback(plate){
 					textureName = new THREE.Texture();
 					loaderTexture.load( texturesPath+'/882/normalMap.jpg', function ( image ) {
 						textureName.image = image;
@@ -114,13 +119,13 @@
 						textureName.repeat.set( 4, 4 );
 					} );
 
-					object.traverse( function ( child ) {
+					plate.traverse( function ( child ) {
 						if ( child instanceof THREE.Mesh ) {
 							child.material.map = textureName;
 						}
 					} );
 
-					scene.add( object );
+					table.add( plate );
 
 				} 
 
@@ -183,7 +188,7 @@
 				theta += 0.5;
 
 				camera.position.x = radius * Math.sin( THREE.Math.degToRad( theta ) );
-				camera.position.y = radius * Math.sin( THREE.Math.degToRad( theta ) );
+				camera.position.y = 50;
 				camera.position.z = radius * Math.cos( THREE.Math.degToRad( theta ) );
 				camera.lookAt( scene.position );
 
