@@ -3,36 +3,32 @@ $(document).ready(function(){
 	btnLeft = $('#left')[0];
 
 	//Touch Events
-	btnRight.addEventListener("touchstart", onClickBtnRight, false);
-	btnRight.addEventListener("touchend", onReleaseBtnRight, false);
-
-	btnLeft.addEventListener("touchstart", onClickBtnLeft, false);
-	btnLeft.addEventListener("touchend", onReleaseBtnLeft, false);
+	btnRight.addEventListener("touchstart", onHoldBtnRight, false);
+	btnLeft.addEventListener("touchstart", onHoldBtnLeft, false);
 
 	//Click Events
-	btnRight.addEventListener("mousedown", onClickBtnRight, false);
-	btnRight.addEventListener("mouseup", onReleaseBtnRight, false);
+	btnRight.addEventListener("mousedown", onHoldBtnRight, false);
+	btnLeft.addEventListener("mousedown", onHoldBtnLeft, false);
+
+	//Release Events
+	document.addEventListener("touchend", onRelease, false);
+	document.addEventListener("mouseup", onRelease, false);
 	
-	btnLeft.addEventListener("mousedown", onClickBtnLeft, false);
-	btnLeft.addEventListener("mouseup", onReleaseBtnLeft, false);
     
-    function onClickBtnRight(e){
+    function onHoldBtnRight(e){
     	e.preventDefault();
     	pressedRight = 1;
     }
 
-    function onReleaseBtnRight(e){
+    function onRelease(e){
     	e.preventDefault();
     	pressedRight = 0;
+    	pressedLeft = 0;
     }
 
-    function onClickBtnLeft(e){
+    function onHoldBtnLeft(e){
     	e.preventDefault();
     	pressedLeft = 1;
     }
 
-    function onReleaseBtnLeft(e){
-    	e.preventDefault();
-    	pressedLeft = 0;
-    }
 });
