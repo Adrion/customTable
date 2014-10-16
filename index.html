@@ -21,6 +21,7 @@
 		<script src="js/libs/stats.min.js"></script>
 
 		<script src="js/libs/AssimpJSONLoader.js"></script>
+		<script src="js/libs/OBJLoader.js"></script>
 		
 		<script>
 			var texturesPath = "object3D/textures",
@@ -66,23 +67,58 @@
 			    	map: THREE.ImageUtils.loadTexture('http://www.html5canvastutorials.com/demos/assets/crate.jpg')
 			    });
 				
-				// Load jeep model using the AssimpJSONLoader
-				var loaderLeg = new THREE.AssimpJSONLoader();
-				loaderLeg.load( modelsPath+'/pieds/21862/model.json', function ( jsonModel ) {
+				// Load models using the AssimpJSONLoader
+				var loaderTexture = new THREE.ImageLoader();
+				
+				var loaderOBJ = new THREE.OBJLoader();
+				loaderOBJ.load( modelsPath+'/PTELC1B14/model.obj', loaderTableCallback );
+
+				
+					
+				
+				var loaderJSON = new THREE.AssimpJSONLoader();
+				loaderJSON.load( modelsPath+'/pieds/21862/model.json', loaderLegCallback );
+
+				function loaderLegCallback(jsonModel) {
 					var Legs = [];
 					for (var i = 0; i < 4; i++) {
 						Legs[i] = jsonModel.clone();
 						scene.add(Legs[i]);
 					};
+					//positionnement des pieds
 					Legs[0].position.x = 10;
 					Legs[1].position.x = -10;
 					Legs[2].position.x = -30;
 					Legs[3].position.x = 30;
+				} 
 
+				function loaderTableCallback(object){
+				textureName = new THREE.Texture();
+				loaderTexture.load( texturesPath+'/882/normalMap.jpg', function ( image ) {
+					textureName.image = image;
+					textureName.needsUpdate = true;
 				} );
+
+					object.traverse( function ( child ) {
+
+						if ( child instanceof THREE.Mesh ) {
+
+							child.material.map = textureName;
+
+						}
+
+					} );
+
+					object.position.y =0;
+					scene.add( object );
+
+				} 
+
 
 				projector = new THREE.Projector();
 				raycaster = new THREE.Raycaster();
+
+
 
 				renderer = new THREE.WebGLRenderer();
 				renderer.setClearColor( 0xf0f0f0 );
@@ -143,7 +179,7 @@
 
 				// find intersections
 
-				var vector = new THREE.Vector3( mouse.x, mouse.y, 1 );
+				/*var vector = new THREE.Vector3( mouse.x, mouse.y, 1 );
 				projector.unprojectVector( vector, camera );
 
 				raycaster.set( camera.position, vector.sub( camera.position ).normalize() );
@@ -168,7 +204,7 @@
 
 					INTERSECTED = null;
 
-				}
+				}*/
 
 				renderer.render( scene, camera );
 
