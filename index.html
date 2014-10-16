@@ -109,6 +109,9 @@
 					loaderTexture.load( texturesPath+'/882/normalMap.jpg', function ( image ) {
 						textureName.image = image;
 						textureName.needsUpdate = true;
+						textureName.wrapS = THREE.RepeatWrapping;
+						textureName.wrapT = THREE.RepeatWrapping;
+						textureName.repeat.set( 4, 4 );
 					} );
 
 					object.traverse( function ( child ) {
