@@ -392,7 +392,7 @@
             "longeurMax": "250",
             "defaultLargeur": "70",
             "defaultLongeur": "120",
-            "urlObjet3D": "http://www.miliboo.com/images_u2y/TBL/object3D/PTSPC1/model.3DS"
+            "urlObjet3D": "http://www.miliboo.com/images_u2y/TBL/object3D/PTSPC1/model.obj"
           },
           {
             "reference": "PTBARC1",
@@ -409,7 +409,7 @@
             "longeurMax": "250",
             "defaultLargeur": "50",
             "defaultLongeur": "120",
-            "urlObjet3D": "http://www.miliboo.com/images_u2y/TBL/object3D/PTBARC1/model.3DS",
+            "urlObjet3D": "http://www.miliboo.com/images_u2y/TBL/object3D/PTBARC1/model.obj",
             "compPieds": "21246|2|3|5"
           },
           {
@@ -427,7 +427,7 @@
             "longeurMax": "120",
             "defaultLargeur": "70",
             "defaultLongeur": "70",
-            "urlObjet3D": "http://www.miliboo.com/images_u2y/TBL/object3D/PTCERC1/model.3DS",
+            "urlObjet3D": "http://www.miliboo.com/images_u2y/TBL/object3D/PTCERC1/model.obj",
             "compPieds": "1|2|3|5"
           },
           {
@@ -445,33 +445,33 @@
             "longeurMax": "120",
             "defaultLargeur": "50",
             "defaultLongeur": "130",
-            "urlObjet3D": "http://www.miliboo.com/images_u2y/TBL/object3D/PTELC1A13/model.3DS",
+            "urlObjet3D": "http://www.miliboo.com/images_u2y/TBL/object3D/PTELC1A13/model.obj",
             "eachDim": {
               "dim": [
                 {
                   "ref": "PTELC1A13",
-                  "urlObjet3D": "http://www.miliboo.com/images_u2y/TBL/object3D/PTELC1A13/model.3DS",
+                  "urlObjet3D": "http://www.miliboo.com/images_u2y/TBL/object3D/PTELC1A13/model.obj",
                   "pointPlan": "1850",
                   "defaultLargeur": "50",
                   "defaultLongeur": "130"
                 },
                 {
                   "ref": "PTELC1A14",
-                  "urlObjet3D": "http://www.miliboo.com/images_u2y/TBL/object3D/PTELC1A14/model.3DS",
+                  "urlObjet3D": "http://www.miliboo.com/images_u2y/TBL/object3D/PTELC1A14/model.obj",
                   "pointPlan": "1850",
                   "defaultLargeur": "53.8",
                   "defaultLongeur": "140"
                 },
                 {
                   "ref": "PTELC1A15",
-                  "urlObjet3D": "http://www.miliboo.com/images_u2y/TBL/object3D/PTELC1A15/model.3DS",
+                  "urlObjet3D": "http://www.miliboo.com/images_u2y/TBL/object3D/PTELC1A15/model.obj",
                   "pointPlan": "2477",
                   "defaultLargeur": "57.7",
                   "defaultLongeur": "150"
                 },
                 {
                   "ref": "PTELC1A16",
-                  "urlObjet3D": "http://www.miliboo.com/images_u2y/TBL/object3D/PTELC1A16/model.3DS",
+                  "urlObjet3D": "http://www.miliboo.com/images_u2y/TBL/object3D/PTELC1A16/model.obj",
                   "pointPlan": "2824",
                   "defaultLargeur": "61.5",
                   "defaultLongeur": "160"
@@ -494,7 +494,7 @@
             "longeurMax": "120",
             "defaultLargeur": "70",
             "defaultLongeur": "70",
-            "urlObjet3D": "http://www.miliboo.com/images_u2y/TBL/object3D/PTOCTC1/model.3DS",
+            "urlObjet3D": "http://www.miliboo.com/images_u2y/TBL/object3D/PTOCTC1/model.obj",
             "compPieds": "1|2|3|5"
           },
           {
@@ -512,7 +512,7 @@
             "longeurMax": "250",
             "defaultLargeur": "50",
             "defaultLongeur": "120",
-            "urlObjet3D": "http://www.miliboo.com/images_u2y/TBL/object3D/PTRCC1D/model.3DS"
+            "urlObjet3D": "http://www.miliboo.com/images_u2y/TBL/object3D/PTRCC1D/model.obj"
           },
           {
             "reference": "PTRCC1G",
@@ -529,7 +529,7 @@
             "longeurMax": "250",
             "defaultLargeur": "50",
             "defaultLongeur": "120",
-            "urlObjet3D": "http://www.miliboo.com/images_u2y/TBL/object3D/PTRCC1G/model.3DS"
+            "urlObjet3D": "http://www.miliboo.com/images_u2y/TBL/object3D/PTRCC1G/model.obj"
           },
           {
             "reference": "PTRELC1",
@@ -546,7 +546,7 @@
             "longeurMax": "250",
             "defaultLargeur": "80",
             "defaultLongeur": "120",
-            "urlObjet3D": "http://www.miliboo.com/images_u2y/TBL/object3D/PTRELC1/model.3DS"
+            "urlObjet3D": "http://www.miliboo.com/images_u2y/TBL/object3D/PTRELC1/model.obj"
           }
         ]
       },
@@ -558,7 +558,7 @@
             "hauteur": "70.3",
             "matiere": "metal",
             "urlPicto": "http://www.miliboo.com/images_u2y/TBL/object3D/pieds/21247/picto.jpg",
-            "urlObject3D": "http://www.miliboo.com/images_u2y/TBL/object3D/pieds/21247/model.3DS",
+            "urlObject3D": "http://www.miliboo.com/images_u2y/TBL/object3D/pieds/21247/model.json",
             "typeMaterial": "chrome",
             "urlDiffuse": "http://www.miliboo.com/images_u2y/TBL/textures/default/diffuse.jpg",
             "urlSpeculaire": "http://www.miliboo.com/images_u2y/TBL/textures/default/specular.jpg",
@@ -572,7 +572,7 @@
             "hauteur": "70.6",
             "matiere": "metal",
             "urlPicto": "http://www.miliboo.com/images_u2y/TBL/object3D/pieds/21246/picto.jpg",
-            "urlObject3D": "http://www.miliboo.com/images_u2y/TBL/object3D/pieds/21246/model.3DS",
+            "urlObject3D": "http://www.miliboo.com/images_u2y/TBL/object3D/pieds/21246/model.json",
             "typeMaterial": "chrome",
             "urlDiffuse": "http://www.miliboo.com/images_u2y/TBL/textures/default/diffuse.jpg",
             "urlSpeculaire": "http://www.miliboo.com/images_u2y/TBL/textures/default/specular.jpg",
