@@ -25,7 +25,7 @@ function initControls(){
     });
     //for debug
     $('#menuU2Y>h2').on('click',function(){
-        $('#menuU2Y ul').slideToggle()();
+        $('#menuU2Y ul').slideToggle();
     });
 
 

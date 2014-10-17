@@ -34,7 +34,6 @@
 				legsGroup = new THREE.Object3D();
 				textureTable = new THREE.Texture();
 				
-				console.log(plate);
 				table.add( plate );
 				table.add( legsGroup );
 
@@ -98,7 +97,6 @@
 			function animate() {
 
 				requestAnimationFrame( animate );
-
 				render();
 				stats.update();
 
