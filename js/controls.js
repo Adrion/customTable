@@ -23,6 +23,11 @@ function initControls(){
     models.on('click', function(){
         loadModel($(this).attr('id'));
     });
+    //for debug
+    $('#menuU2Y>h2').on('click',function(){
+        $('#menuU2Y ul').slideToggle()();
+    });
+
 
     //Release Events
     document.addEventListener("touchend", onRelease, false);
