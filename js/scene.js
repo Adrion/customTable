@@ -1,18 +1,17 @@
-			var texturesPath = "object3D/textures",
-			modelsPath = "object3D/models";
-
-			var container, stats;
+			var container, stats, loaderTexture;
 			var camera, scene, projector, raycaster, renderer;
 
-			var pressedLeft = 0,pressedRight = 0;
+			var table,plate;
+			var textureTable;
+			var pressedLeft = 0, pressedRight = 0;
 
 			var mouse = new THREE.Vector2(), INTERSECTED;
 			var radius = 120, theta = 0;
 
-			init();
-			animate();
+			
+			
 
-			function init() {
+			function initScene() {
 
 				container = document.createElement( 'div' );
 				container.setAttribute("id", "container");
@@ -30,67 +29,27 @@
 				light.position.set( -1, -1, -1 ).normalize();
 				scene.add( light );
 
-				var table = new THREE.Object3D();
-
-				// Load models using the AssimpJSONLoader
-				var loaderTexture = new THREE.ImageLoader();
+				table = new THREE.Object3D();
+				plate = new THREE.Object3D();
+				legsGroup = new THREE.Object3D();
+				textureTable = new THREE.Texture();
 				
+				console.log(plate);
+				table.add( plate );
+				table.add( legsGroup );
+
 				var loaderOBJ = new THREE.OBJLoader();
 				loaderOBJ.load( modelsPath+'/PTELC1B14/model.obj', loaderTableCallback );
-	
 				
-				var loaderJSON = new THREE.AssimpJSONLoader();
+				//loadModel('PTELC1A');
+				loadModel('21246');
+				/*var loaderJSON = new THREE.AssimpJSONLoader();
 				loaderJSON.load( modelsPath+'/pieds/21862/model.json', loaderLegCallback );
-
+*/
 				table.position.y = 20;
 				scene.add(table);
 
-				function loaderLegCallback(jsonModel) {
-					var legs = [],
-					legsGroup = new THREE.Object3D();
-					for (var i = 0; i < 4; i++) {
-						legs[i] = jsonModel.clone();
-						legsGroup.add(legs[i]);
-					};
-					//positionnement des pieds
-					legs[0].position.x = -30;
-					legs[1].position.x = -30;
-					legs[2].position.x =  30;
-					legs[3].position.x =  30;
-
-					legs[0].position.z = -30;
-					legs[3].position.z = -30;
-					legs[1].position.z = 30;
-					legs[2].position.z = 30
-
-
-					legs[0].rotation.z =  1.5707963268;
-					legs[1].rotation.z =  3.1415926536;
-					legs[2].rotation.z = -1.5707963268;
-					
-					legsGroup.position.y = -1;
-					table.add(legsGroup);
-				} 
-
-				function loaderTableCallback(plate){
-					textureName = new THREE.Texture();
-					loaderTexture.load( texturesPath+'/882/normalMap.jpg', function ( image ) {
-						textureName.image = image;
-						textureName.needsUpdate = true;
-						textureName.wrapS = THREE.RepeatWrapping;
-						textureName.wrapT = THREE.RepeatWrapping;
-						textureName.repeat.set( 4, 4 );
-					} );
-
-					plate.traverse( function ( child ) {
-						if ( child instanceof THREE.Mesh ) {
-							child.material.map = textureName;
-						}
-					} );
-
-					table.add( plate );
-
-				} 
+				
 
 
 				projector = new THREE.Projector();
@@ -111,11 +70,10 @@
 
 				document.addEventListener( 'mousemove', onDocumentMouseMove, false );
 
-				//
-
 				window.addEventListener( 'resize', onWindowResize, false );
-
+				animate();
 			}
+
 
 			function onWindowResize() {
 

@@ -1,7 +1,8 @@
-$(document).ready(function(){
+function initControls(){
 	var btnRight = $('#right')[0],
 	btnLeft = $('#left')[0],
-    textures = $('#test img');
+    textures = $('#test img'),
+    models = $('#FormesItems li');
 
 	//Touch Events
 	btnRight.addEventListener("touchstart", onHoldBtnRight, false);
@@ -9,12 +10,18 @@ $(document).ready(function(){
     textures.on('touchstart',function(){
         loadTexture($(this).attr('src'));
     });
+    models.on('touchstart',function(){
+        loadModel($(this).attr('id'));
+    });
 
     //Click Events
     btnRight.addEventListener("mousedown", onHoldBtnRight, false);
     btnLeft.addEventListener("mousedown", onHoldBtnLeft, false);
-    textures.on('click',function(){
+    textures.on('click', function(){
         loadTexture($(this).attr('src'));
+    });
+    models.on('click', function(){
+        loadModel($(this).attr('id'));
     });
 
     //Release Events
@@ -38,4 +45,4 @@ $(document).ready(function(){
     	pressedLeft = 1;
     }
 
-});
+}

@@ -1,8 +1,7 @@
 function loadTexture(texturePath){
-
+	
 	var textureName = new THREE.Texture(),
 	loaderTexture = new THREE.ImageLoader();
-	console.log(texturePath);
 
 	loaderTexture.load( texturePath, function ( image ) {
 		textureName.image = image;
