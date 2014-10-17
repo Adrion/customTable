@@ -1,10 +1,7 @@
-$(document).ready(function(){
-		$('#test img').on('click',function(){
-			console.log('test');
+function loadTexture(texturePath){
 
 			var textureName = new THREE.Texture(),
-			loaderTexture = new THREE.ImageLoader(),
-			texturePath = $(this).attr('src');
+			loaderTexture = new THREE.ImageLoader();
 			console.log(texturePath);
 
 			loaderTexture.load( texturePath, function ( image ) {
@@ -20,6 +17,5 @@ $(document).ready(function(){
 					child.material.map = textureName;
 				}
 			} );
-		});
+}
 
-});
