@@ -1,0 +1,174 @@
+{
+  "root": {
+    "-version": "1.0",
+    "-encoding": "UTF-8",
+    "data": {
+      "myInterface": {
+        "messageAccueil": "Veuillez choisir une forme<br>de table",
+        "blocFonctions": {
+          "printBtn": "Imprimer",
+          "saveBtn": "Sauvegarder",
+          "shareBtn": "Partager",
+          "aideBtn": "Aide",
+          "publierBtn": "Ajouter à la galerie",
+          "envoyerBtn": "Envoyer",
+          "detailBtn": "Détails du produit",
+          "echantillonBtn": "Echantillons"
+        },
+        "blocDimensions": {
+          "titre": "Dimensions",
+          "hauteur": "Hauteur :",
+          "largeur": "Longueur :",
+          "longueur": "Largeur :"
+        },
+        "blocDevis": {
+          "titre": "Devis :",
+          "mention": "Frais de port offert",
+          "achatButton": "Acheter",
+          "housses": "jeux de housses",
+          "details": " de details",
+          "stockOk": "Livré sous<br>5 jours",
+          "stockNotOk": "Livré sous<br>1 semaine",
+          "semaine1": "Livré sous<br>1 semaine",
+          "semaine2": "Livré sous<br>2 semaine",
+          "semaine3": "Livré sous<br>3 semaine",
+          "mois1": "Livré sous<br>1 mois",
+          "mois2": "Livré sous<br>2 mois",
+          "mois3": "Livré sous<br>3 mois"
+        },
+        "blocMenu": {
+          "parties": {
+            "partie": {
+              "titre": "Choix fromes<br>et matières",
+              "ssPartie": [
+                {
+                  "-type": "forme",
+                  "id": "0",
+                  "titre": "Formes"
+                },
+                {
+                  "-type": "dimensions",
+                  "titre": "Dimensions",
+                  "id": "1"
+                },
+                {
+                  "-type": "matiere",
+                  "titre": "Coloris du plan",
+                  "id": "2"
+                },
+                {
+                  "-type": "matiere",
+                  "titre": "Coloris du bord",
+                  "id": "3"
+                },
+                {
+                  "-type": "pieds",
+                  "titre": "Pieds",
+                  "id": "4"
+                }
+              ]
+            }
+          },
+          "bouton_retour": "Retour"
+        },
+        "contentDimensions": {
+          "titre": "Dimensions",
+          "title01": "Veuillez indiquez la longeur souhaité",
+          "title02": "Veuillez indiquez la largeur souhaité",
+          "help": "La longeur de ce plan doit être superieur à la largeur<br/>Longeur max:400cm<br/>Largeur max:400cm<br/>Longeur min:400cm<br/>Largeur min:400cm",
+          "titleFixe": "Veuillez choisir une dimension ci-dessou"
+        },
+        "blocDescription": {
+          "titre": "Description technique",
+          "plan": "Plan",
+          "couleurPlan": "Couleur plan",
+          "couleurBord": "Couleur bord",
+          "pieds": "Pieds"
+        }
+      },
+      "popups": {
+        "partage": {
+          "titre": "Partager",
+          "titre1": "Partager votre création",
+          "titre2": "Envoyez votre création par mail",
+          "titre3": "Publier votre création dans notre galerie",
+          "bouton1": "Envoyer",
+          "bouton2": "Publier",
+          "texte1": "Votre nom & prénom :",
+          "texte2": "L’adresse e-mail de votre ami :",
+          "texte3": "Laisser un message :",
+          "texte4": "Votre adresse e-mail :",
+          "texte5": "Félicitations, vous avez créé avec brio votre canapé personnalisé up to you sur notre site !<br><br>Vous êtes fier de votre réalisation ?<br><br>Alors, n'hésitez pas a la publier dans notre galerie des créations",
+          "texte6": "Nom de votre création :",
+          "texte8": "Votre canapé a bien été publié.",
+          "texte9": "Le visuel de votre canapé a bien été envoyé par mail.",
+          "texteTwitter": "Miliboo - Composez-vous même le meuble de vos rêves : http://www.miliboo.com/uptoyou/canape-modulable-et-personnalisable.html",
+          "erreurs": {
+            "erreurNom": "Veuillez préciser votre nom, merci.",
+            "erreurMail1": "Veuillez préciser votre email, merci. ",
+            "erreurMail2": "Veuillez préciser un email valide, merci.",
+            "recoOk": "Votre message a été envoyé avec succés",
+            "partageOk": "Votre canapé à été sauvegardé avec succés",
+            "erreurGallerie": "Veuillez préciser le nom de votre création",
+            "erreurPseudo": "Veuillez préciser votre pseudo, merci."
+          },
+          "texte10": "Votre pseudonyme : ",
+          "texte11": "Votre adresse e-mail :"
+        },
+        "aide": {
+          "groupe": [
+            {
+              "titre": "Notice de montage en images",
+              "video": {
+                "img": "http://www.miliboo.com/images_u2y/KNP/medias/video02.jpg",
+                "url": "http://www.miliboo.com/images_u2y/KNP/medias/video02.flv"
+              }
+            },
+            {
+              "titre": "Découvrez up to you canapés",
+              "video": {
+                "img": "http://www.miliboo.com/images_u2y/KNP/medias/video03.jpg",
+                "url": "http://www.miliboo.com/images_u2y/KNP/medias/video03.flv"
+              }
+            },
+            {
+              "titre": "prochainement disponible, Comment utiliser le configurateur",
+              "video": { "img": "http://www.miliboo.com/images_u2y/KNP/medias/video01.jpg" }
+            }
+          ]
+        },
+        "sauvegarde": {
+          "titre": "Sauvegarder",
+          "texte": "J’adore ce canapé !<br>Je souhaite conserver ce modèle dont le visuel me sera envoyé par email.<br><br>J’indique mon adresse email :",
+          "bouton": "Sauvegarder",
+          "texteOk": "Félicitations, vous venez de sauvegarder votre canapé « up to you ».<br><br>Un e-mail contenant une photo de votre canapé personnalisé vient de vous être envoyé."
+        },
+        "accueil": {
+          "titre": "Sélectionnez l'ambiance de votre choix",
+          "texte": "Choisissez d'abord la forme et la taille de votre canapé : une ou plusieurs places, convertible, avec méridienne, avec un pouf, rond... Puis laissez libre cours a toutes vos envies et décidez de la matière et des couleurs des différents éléments de votre canapé : assise, dossier, accoudoirs, pieds, structure et même les coussins ! Le canapé de vos rêves est maintenant sous vos yeux. Il n’y a plus qu'a cliquer pour le recevoir sous quelques jours seulement dans votre salon !"
+        },
+        "probleme": { "achat_incomplet": "Vous n’avez pas encore choisi toutes les couleurs et les matières du revêtement de votre canapé ou vous n'avez pas encore choisi d'accoudoir pour votre canapé.<br><br>Veuillez faire votre choix à l’aide des boutons « coussins assise », « coussins dossier », « caisse » et « accoudoirs » situés sur le côté droit" },
+        "details": {
+          "titreDetails": "Détails du produit",
+          "titre1": "Composition de votre canapé up to you",
+          "textDetails": "Les coussins d’assise sont garnis de mousse polyuréthane haute résilience, les coussins de dossier et les petits coussins de mousse polyester pour un confort optimal.<br><br>Densité d'assise : 30 kg/m3, densité de dossier : 25 kg/m3. <br><br>Pour le modèle convertible, densité du matelas : 30 kg/m3, épaisseur 10 cm, dimensions du couchage 135x185 cm.<br><br>Structure en pin massif, pieds en bouleau.<br>Suspensions : combinaisons de sangles élastiques et de ressorts pour un meilleur confort.<br><br>Votre canapé up to you bénéficie d’une garantie de 2 ans, hors revêtements.<br><br>Sa livraison est offerte (livraison rez-de-chaussée incluse, supplément de 30 euros pour une livraison à l’étage). Les petits coussins sont offerts."
+        },
+        "echantillons": {
+          "titre1": "Echantillons",
+          "titre2": "Catalogue échantillons",
+          "texte": "Afin de vous aider à choisir le revêtement et la couleur de votre canapé, vous pouvez consulter le catalogue d’échantillons « coloris et matières ». <br>Il est disponible en ligne ou sur commande : il sera livré à votre domicile sous 48h.<br><br>Les frais de traitement sont de 5 euros, ils vous seront remboursés intégralement lors de votre première commande de canapé up to you.",
+          "bouton1": "Consulter",
+          "url1": "http://fichiers.miliboo.com/Look_Book_Matiere_Canape/",
+          "bouton2": "Commander",
+          "url2": "http://www.miliboo.com/panier.php?type=panier&reference=16481&modif=ajouter"
+        },
+        "stock": {
+          "titre": "Rupture de stock",
+          "sousTitre": "texte stock",
+          "texte": "Cet élément est en rupture de stock.<br><br>Vous avez néammoins la possibilité de finaliser votre canapé. Cependant, les délais de livraison en seront affectés.<br><br>Délais : ",
+          "bouton": "Continuer"
+        }
+      }
+    }
+  }
+}
