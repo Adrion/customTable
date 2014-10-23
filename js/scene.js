@@ -1,11 +1,10 @@
 			var container, stats, loaderTexture;
-			var camera, scene, projector, raycaster, renderer;
+			var camera, scene, projector, raycaster, renderer, controls;
 
-			var table,plate;
+			var table, plate, editable = [];
 			var textureTable;
 			var pressedLeft = 0, pressedRight = 0;
 
-			var mouse = new THREE.Vector2(), INTERSECTED;
 			var radius = 120, theta = 0;
 
 			
@@ -67,10 +66,8 @@
 				stats.domElement.style.top = '0px';
 				container.appendChild( stats.domElement );
 
-				document.addEventListener( 'mousemove', onDocumentMouseMove, false );
 
 				window.addEventListener( 'resize', onWindowResize, false );
-				animate();
 			}
 
 
@@ -118,35 +115,6 @@
 				camera.position.y = 50;
 				camera.position.z = radius * Math.cos( THREE.Math.degToRad( theta ) );
 				camera.lookAt( scene.position );
-
-				// find intersections
-
-				/*var vector = new THREE.Vector3( mouse.x, mouse.y, 1 );
-				projector.unprojectVector( vector, camera );
-
-				raycaster.set( camera.position, vector.sub( camera.position ).normalize() );
-
-				var intersects = raycaster.intersectObjects( scene.children );
-
-				if ( intersects.length > 0 ) {
-
-					if ( INTERSECTED != intersects[ 0 ].object ) {
-
-						if ( INTERSECTED ) INTERSECTED.material.emissive.setHex( INTERSECTED.currentHex );
-
-						INTERSECTED = intersects[ 0 ].object;
-						INTERSECTED.currentHex = INTERSECTED.material.emissive.getHex();
-						INTERSECTED.material.emissive.setHex( 0xff0000 );
-
-					}
-
-				} else {
-
-					if ( INTERSECTED ) INTERSECTED.material.emissive.setHex( INTERSECTED.currentHex );
-
-					INTERSECTED = null;
-
-				}*/
 
 				renderer.render( scene, camera );
 

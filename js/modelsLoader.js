@@ -65,5 +65,5 @@ function loaderLegCallback(jsonModel) {
 	legs[2].rotation.z = -1.5707963268;
 				
 	legsGroup.position.y = -1;
-	//table.add(legsGroup);
+	table.add(legsGroup);
 } 
