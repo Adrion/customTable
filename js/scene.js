@@ -1,5 +1,6 @@
 			var container, stats, GROUND, effect;
-			var activeCamera, oculuscamera, camera, orbitcamera, scene, projector, raycaster, renderer, controls;
+			var cameras = [],
+			  activeCamera, oculuscamera, camera, orbitcamera, scene, projector, raycaster, renderer, controls;
 
 			var skyboxMesh, skyboxWidth;
 			var pressedLeft = false,
@@ -23,10 +24,14 @@
 			  stats.domElement.style.top = '0px';
 			  container.appendChild(stats.domElement);
 
+			  //camera rotation
 			  camera = new THREE.PerspectiveCamera(70, window.innerWidth / window.innerHeight, 1, 10000);
+			  cameras.push(camera);
 
+			  //camera 'libre'
 			  orbitcamera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 20000);
 			  orbitcamera.position.set(-70, 6, -205);
+			  cameras.push(orbitcamera);
 			  scene.add(orbitcamera);
 
 			  //Cardboard Camera
@@ -34,6 +39,7 @@
 			  effect.setSize(window.innerWidth, window.innerHeight);
 			  oculuscamera = new THREE.PerspectiveCamera(90, 1, 0.001, 700);
 			  oculuscamera.position.set(-70, -50, -105);
+			  cameras.push(oculuscamera);
 			  scene.add(oculuscamera);
 
 			  //controls CbCamera
@@ -115,14 +121,11 @@
 			}
 
 			function onWindowResize() {
-			  camera.aspect = window.innerWidth / window.innerHeight;
-			  camera.updateProjectionMatrix();
 
-			  orbitcamera.aspect = window.innerWidth / window.innerHeight;
-			  orbitcamera.updateProjectionMatrix();
-
-			  oculuscamera.aspect = window.innerWidth / window.innerHeight;
-			  oculuscamera.updateProjectionMatrix();
+			  cameras.forEach(function (camera) {
+			    camera.aspect = window.innerWidth / window.innerHeight;
+			    camera.updateProjectionMatrix();
+			  });
 
 			  renderer.setSize(window.innerWidth, window.innerHeight);
 			  effect.setSize(window.innerWidth, window.innerHeight);
