@@ -59,6 +59,10 @@ function loaderLegCallback(jsonModel) {
   legs[1].position.z = 30;
   legs[2].position.z = 30
 
+  var box3 = new THREE.Box3().setFromObject(plate);
+  legsGroup.scale.x = ((box3.size().x) / 2) / 60;
+  legsGroup.scale.z = ((box3.size().z) / 2) / 60;
+
   legs[0].rotation.z = 1.5707963268;
   legs[1].rotation.z = 3.1415926536;
   legs[2].rotation.z = -1.5707963268;
@@ -67,4 +71,16 @@ function loaderLegCallback(jsonModel) {
   table.add(legsGroup);
 
   updateTablePosition(table);
+}
+
+function updateLegsPositions(plate) {
+  var box3 = new THREE.Box3().setFromObject(plate);
+  console.log(box3);
+  console.log(plate);
+  console.log(legsGroup);
+  legsGroup.scale.x = ((box3.size().x) / 2) / 60;
+  legsGroup.scale.z = ((box3.size().z) / 2) / 60;
+
+  /*legsGroup.scale.x = 0.9;
+	legsGroup.scale.z = 0.7;*/
 }
