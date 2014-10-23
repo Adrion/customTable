@@ -1,5 +1,5 @@
 			var container, stats, loaderTexture;
-			var camera, scene, projector, raycaster, renderer, controls;
+			var camera,orbitcamera, scene, projector, raycaster, renderer, controls;
 
 			var table, plate, editable = [];
 			var textureTable;
@@ -7,18 +7,35 @@
 
 			var radius = 120, theta = 0;
 
-			
-			
-
 			function initScene() {
 
 				container = document.createElement( 'div' );
 				container.setAttribute("id", "container");
 				document.body.appendChild( container );
 
-				camera = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 1, 10000 );
-
 				scene = new THREE.Scene();
+				
+				renderer = new THREE.WebGLRenderer();
+				renderer.setClearColor( 0xf0f0f0 );
+				renderer.setSize( window.innerWidth, window.innerHeight );
+				renderer.sortObjects = false;
+				container.appendChild(renderer.domElement);
+
+				stats = new Stats();
+				stats.domElement.style.position = 'absolute';
+				stats.domElement.style.top = '0px';
+				container.appendChild( stats.domElement );
+				
+				camera = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 1, 10000 );
+				
+			    orbitcamera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 20000);
+				orbitcamera.position.set(120,6,0);
+				scene.add(orbitcamera);
+
+				window.addEventListener( 'resize', onWindowResize, false );
+
+				// Set the background color of the scene.
+			    renderer.setClearColorHex(0x333F47, 1);
 
 				var light = new THREE.DirectionalLight( 0xffffff, 2 );
 				light.position.set( 1, 1, 1 ).normalize();
@@ -47,27 +64,12 @@
 				table.position.y = 20;
 				scene.add(table);
 
-				
+				/*projector = new THREE.Projector();
+				raycaster = new THREE.Raycaster();*/
 
+				// Add OrbitControls so that we can pan around with the mouse.
+		      controls = new THREE.OrbitControls(orbitcamera, renderer.domElement);
 
-				projector = new THREE.Projector();
-				raycaster = new THREE.Raycaster();
-
-
-
-				renderer = new THREE.WebGLRenderer();
-				renderer.setClearColor( 0xf0f0f0 );
-				renderer.setSize( window.innerWidth, window.innerHeight );
-				renderer.sortObjects = false;
-				container.appendChild(renderer.domElement);
-
-				stats = new Stats();
-				stats.domElement.style.position = 'absolute';
-				stats.domElement.style.top = '0px';
-				container.appendChild( stats.domElement );
-
-
-				window.addEventListener( 'resize', onWindowResize, false );
 			}
 
 
@@ -80,14 +82,6 @@
 
 			}
 
-			function onDocumentMouseMove( event ) {
-
-				event.preventDefault();
-
-				mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
-				mouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
-
-			}
 
 			//
 
@@ -95,8 +89,8 @@
 
 				requestAnimationFrame( animate );
 				render();
+				controls.update();
 				stats.update();
-
 			}
 
 			function render() {
@@ -110,12 +104,16 @@
 				else{
 					theta += 0.5;
 				}
-
 				camera.position.x = radius * Math.sin( THREE.Math.degToRad( theta ) );
 				camera.position.y = 50;
 				camera.position.z = radius * Math.cos( THREE.Math.degToRad( theta ) );
-				camera.lookAt( scene.position );
 
-				renderer.render( scene, camera );
+				camera.lookAt( scene.position );
+				//camera2.lookAt( scene.position );
+
+				//renderer.render( scene, camera );
+
+				// Render for testing
+				renderer.render( scene, orbitcamera );
 
 			}
