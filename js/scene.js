@@ -1,7 +1,7 @@
-			var container, stats;
+			var container, stats, GROUND;
 			var camera,orbitcamera, scene, projector, raycaster, renderer, controls;
 
-			var skyboxMesh;
+			var skyboxMesh, skyboxWidth;
 			var pressedLeft = 0, pressedRight = 0;
 
 			var radius = 120, theta = 0;
@@ -60,7 +60,9 @@
 				} ),
 
 				// build the skybox Mesh
-				skyboxMesh	= new THREE.Mesh( new THREE.BoxGeometry( 2000, 2000, 2000 ), cubeShader );
+				skyboxWidth = 350;
+				GROUND = skyboxWidth/2;
+				skyboxMesh	= new THREE.Mesh( new THREE.BoxGeometry( skyboxWidth, skyboxWidth, skyboxWidth ), cubeShader );
 
 				// add it to the scene
 				scene.add( skyboxMesh );
