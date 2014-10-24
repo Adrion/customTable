@@ -1,8 +1,7 @@
-			var container, stats, loaderTexture;
+			var container, stats;
 			var camera,orbitcamera, scene, projector, raycaster, renderer, controls;
 
-			var table, plate, editable = [];
-			var textureTable;
+			var skyboxMesh;
 			var pressedLeft = 0, pressedRight = 0;
 
 			var radius = 120, theta = 0;
@@ -35,7 +34,37 @@
 				window.addEventListener( 'resize', onWindowResize, false );
 
 				// Set the background color of the scene.
-			    renderer.setClearColorHex(0x333F47, 1);
+			    renderer.setClearColor(0x333F47, 1);
+
+			    // ## Begining of the Skybox Code
+	
+				// load the cube textures
+				var urlPrefix	= "./object3D/textures/skyBox/";
+				var urls = [ urlPrefix + "posx.jpg", urlPrefix + "negx.jpg",
+						urlPrefix + "posy.jpg", urlPrefix + "negy.jpg",
+						urlPrefix + "posz.jpg", urlPrefix + "negz.jpg" ];
+				var textureCube	= THREE.ImageUtils.loadTextureCube( urls );
+				textureCube.format = THREE.RGBFormat;
+
+				var shader = THREE.ShaderLib[ "cube" ];
+				shader.uniforms[ "tCube" ].value = textureCube;
+
+				var cubeShader = new THREE.ShaderMaterial( {
+
+					fragmentShader: shader.fragmentShader,
+					vertexShader: shader.vertexShader,
+					uniforms: shader.uniforms,
+					depthWrite: false,
+					side: THREE.BackSide
+
+				} ),
+
+				// build the skybox Mesh
+				skyboxMesh	= new THREE.Mesh( new THREE.BoxGeometry( 2000, 2000, 2000 ), cubeShader );
+
+				// add it to the scene
+				scene.add( skyboxMesh );
+
 
 				var light = new THREE.DirectionalLight( 0xffffff, 2 );
 				light.position.set( 1, 1, 1 ).normalize();
@@ -45,30 +74,13 @@
 				light.position.set( -1, -1, -1 ).normalize();
 				scene.add( light );
 
-				table = new THREE.Object3D();
-				plate = new THREE.Object3D();
-				legsGroup = new THREE.Object3D();
-				textureTable = new THREE.Texture();
-				
-				table.add( plate );
-				table.add( legsGroup );
-
-				var loaderOBJ = new THREE.OBJLoader();
-				loaderOBJ.load( modelsPath+'/PTELC1B14/model.obj', loaderTableCallback );
-				
-				//loadModel('PTELC1A');
-				loadModel('21246');
-				/*var loaderJSON = new THREE.AssimpJSONLoader();
-				loaderJSON.load( modelsPath+'/pieds/21862/model.json', loaderLegCallback );
-*/
-				table.position.y = 20;
-				scene.add(table);
+				initTable();
 
 				/*projector = new THREE.Projector();
 				raycaster = new THREE.Raycaster();*/
 
 				// Add OrbitControls so that we can pan around with the mouse.
-		      controls = new THREE.OrbitControls(orbitcamera, renderer.domElement);
+		     	controls = new THREE.OrbitControls(orbitcamera, renderer.domElement);
 
 			}
 
@@ -107,7 +119,6 @@
 				camera.position.x = radius * Math.sin( THREE.Math.degToRad( theta ) );
 				camera.position.y = 50;
 				camera.position.z = radius * Math.cos( THREE.Math.degToRad( theta ) );
-
 				camera.lookAt( scene.position );
 				//camera2.lookAt( scene.position );
 
