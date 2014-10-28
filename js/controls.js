@@ -13,7 +13,7 @@ function initControls(){
     models.on('touchstart',function(){
         loadModel($(this).attr('id'));
     });
-    $("#menuU2Y h3").on("touchstart", menuSlideHandler,false);
+    $("#menuU2Y h3").on("touchstart", menuSlideHandler);
 
     //Click Events
     btnRight.addEventListener("mousedown", onHoldBtnRight, false);
