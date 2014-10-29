@@ -1,0 +1,53 @@
+#menuU2Y {
+	background: #f1f1f1;
+	width: 250px;
+	color: black;
+	/*Some cool shadow and glow effect*/
+	box-shadow: 
+		0 5px 15px 1px rgba(0, 0, 0, 0.6), 
+		0 0 200px 1px rgba(255, 255, 255, 0.5);
+	position: absolute;
+	height: 100%;
+	right:0;
+	background-color: white;
+	overflow: scroll;
+	h3 {
+		color: white;
+		font-size: 12px;
+		line-height: 34px;
+		padding: 0 10px;
+		cursor: pointer;
+		/*fallback for browsers not supporting gradients*/
+		background: #b5101e; 
+		background: linear-gradient(#c61020, #b5101e);
+	}
+	h3:hover {
+		text-shadow: 0 0 1px rgba(255, 255, 255, 0.7);
+	}
+	h3 span {
+		font-size: 16px;
+		margin-right: 10px;
+	}
+	li.active ul {
+		display: block;
+	}
+	li {
+		list-style-type: none;
+	}
+	ul ul {
+		display: none;
+		li{
+			cursor:pointer;
+			font-size: 11px;
+			line-height: 27px;
+			display: block;
+			padding: 0 15px;
+			/*transition for smooth hover animation*/
+			transition: all 0.15s;
+		}
+	}
+}
+#test{
+	position: absolute;
+	right: 40%;
+}

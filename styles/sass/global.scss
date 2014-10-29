@@ -1,0 +1,32 @@
+/*Basic reset*/
+* {margin: 0; padding: 0;}
+
+body {
+	font-family: Monospace;
+	background-color: #f0f0f0;
+	margin: 0px;
+	overflow: hidden;
+}
+
+.containers, #interface *{
+	-webkit-user-select: none;  /* Chrome all / Safari all */
+  	-moz-user-select: none;     /* Firefox all */
+ 	-ms-user-select: none;      /* IE 10+ */
+}
+
+.buttons{
+	position: absolute;
+	border: 1px solid red;
+	font-size: 2em;
+	color: red;
+	z-index: 2;
+	top: 45%;
+	padding: 10px;
+	background-color: white;
+}
+#left{
+	left: 0;
+}
+#right{
+	right: 0;
+}
