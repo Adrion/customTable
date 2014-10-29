@@ -1,2 +1,6 @@
 bower_components/
 node_modules/
+localDebug.html
+styles/css/main.css
+styles/css/menu.css
+.sass-cache/
