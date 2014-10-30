@@ -19,7 +19,7 @@
 					<li ng-class="{ active:panel.isSelected(1) }">
 						<h3 ng-click="panel.selectTab(1)">Formes</h3>
 						<ul ng-show="panel.isSelected(1)" id="FormesItems">
-							<li ng-repeat="forme in dataMenu.formes">{{forme.name}}</li>
+							<li ng-repeat="forme in dataMenu.formes" ng-click="dataMenu.selectForm(forme.reference)">{{forme.name}}</li>
 						</ul>
 					</li>
 					<li ng-class="{ active:panel.isSelected(2) }">

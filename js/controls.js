@@ -10,18 +10,12 @@ function initControls() {
   textures.on('touchstart', function () {
     loadTexture($(this).attr('src'));
   });
-  models.on('touchstart', function () {
-    loadModel($(this).attr('id'));
-  });
 
   //Click Events
   btnRight.addEventListener("mousedown", onHoldBtnRight, false);
   btnLeft.addEventListener("mousedown", onHoldBtnLeft, false);
   textures.on('click', function () {
     loadTexture($(this).attr('src'));
-  });
-  models.on('click', function () {
-    loadModel($(this).attr('id'));
   });
 
   //Release Events

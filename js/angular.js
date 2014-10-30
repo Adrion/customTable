@@ -3,9 +3,12 @@
 
   app.controller('DataMenuController', function () {
     var that = this;
+
     this.formes = [{
+      reference: "PTSPC1",
       name: "test forme"
     }, {
+      reference: "une deuxieme reference",
       name: "test 2 forme"
     }];
     this.dimensions = [];
@@ -17,6 +20,12 @@
     this.addElement = function (obj, type) {
       that.menu[type].push(obj);
     };
+
+    this.selectForm = function (reference) {
+      console.log(reference);
+      loadModel(reference);
+    };
+
   });
 
   app.controller('panelController', function () {
