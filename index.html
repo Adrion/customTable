@@ -7,34 +7,38 @@
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 		<link rel="stylesheet" type="text/css" href="css/main.css">
 	</head>
-	<body>
+	<body ng-app="app">
 
-		<div id="interface">
+		<div id="interface" ng-controller="dataController as data">
 			<div class="buttons" id="left">LEFT</div>
 			<div class="buttons" id="right">RIGHT</div>
 			
-			<div id="menuU2Y">
+			<div ng-controller="panelController as panel" id="menuU2Y">
 				<h2>Menu</h2>
 				<ul>
-					<li class="active">
-						<h3>Formes</h3>
-						<ul id="FormesItems">
+					<li ng-class="{ active:panel.isSelected(1) }">
+						<h3 ng-click="panel.selectTab(1)">Formes</h3>
+						<ul ng-show="panel.isSelected(1)" id="FormesItems">
+							<li ng-repeat="forme in menu.formes"></li>
 						</ul>
 					</li>
-					<li>
-						<h3>Dimensions</h3>
-						<ul id="DimensionsItems">
+					<li ng-class="{ active:panel.isSelected(2) }">
+						<h3 ng-click="panel.selectTab(2)">Dimensions</h3>
+						<ul ng-show="panel.isSelected(2)" id="DimensionsItems">
+							<li ng-repeat="dimension in menu.dimensions"></li>
 						</ul>
 					</li>
-					<li>
-						<h3>Coloris du plan</h3>
-						<ul id="ColorisItems">
+					<li ng-class="{ active:panel.isSelected(3) }">
+						<h3 ng-click="panel.selectTab(3)">Coloris du plan</h3>
+						<ul ng-show="panel.isSelected(3)" id="ColorisItems">
+							<li ng-repeat="colori in menu.coloris"></li>
 						</ul>
 					</li>
 					<!--li>Coloris du Bord</li-->
-					<li>
-						<h3>Pieds</h3>
-						<ul id="PiedsItems">
+					<li ng-class="{ active:panel.isSelected(4) }">
+						<h3 ng-click="panel.selectTab(4)">Pieds</h3>
+						<ul ng-show="panel.isSelected(4)" id="PiedsItems">
+							<li ng-repeat="pied in menu.pieds"></li>
 						</ul>
 					</li>
 				</ul>
@@ -54,6 +58,7 @@
 		<script src="js/libs/three.min.js"></script>
 		<script src="js/libs/stats.min.js"></script>
 		<script src="js/libs/jquery.min.js"></script>
+		<script src="js/libs/angular.min.js"></script>
 		<script src="js/libs/Detector.js"></script>
 		<script src="js/libs/OrbitControls.js"></script>
 		<script src="js/libs/AssimpJSONLoader.js"></script>
