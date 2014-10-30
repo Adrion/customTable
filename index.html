@@ -9,7 +9,7 @@
 	</head>
 	<body ng-app="app">
 
-		<div id="interface" ng-controller="dataController as data">
+		<div id="interface" ng-controller="DataMenuController as dataMenu">
 			<div class="buttons" id="left">LEFT</div>
 			<div class="buttons" id="right">RIGHT</div>
 			
@@ -19,26 +19,26 @@
 					<li ng-class="{ active:panel.isSelected(1) }">
 						<h3 ng-click="panel.selectTab(1)">Formes</h3>
 						<ul ng-show="panel.isSelected(1)" id="FormesItems">
-							<li ng-repeat="forme in menu.formes"></li>
+							<li ng-repeat="forme in dataMenu.formes">{{forme.name}}</li>
 						</ul>
 					</li>
 					<li ng-class="{ active:panel.isSelected(2) }">
 						<h3 ng-click="panel.selectTab(2)">Dimensions</h3>
 						<ul ng-show="panel.isSelected(2)" id="DimensionsItems">
-							<li ng-repeat="dimension in menu.dimensions"></li>
+							<li ng-repeat="dimension in dataMenu.dimensions"></li>
 						</ul>
 					</li>
 					<li ng-class="{ active:panel.isSelected(3) }">
 						<h3 ng-click="panel.selectTab(3)">Coloris du plan</h3>
 						<ul ng-show="panel.isSelected(3)" id="ColorisItems">
-							<li ng-repeat="colori in menu.coloris"></li>
+							<li ng-repeat="colori in dataMenu.coloris"></li>
 						</ul>
 					</li>
 					<!--li>Coloris du Bord</li-->
 					<li ng-class="{ active:panel.isSelected(4) }">
 						<h3 ng-click="panel.selectTab(4)">Pieds</h3>
 						<ul ng-show="panel.isSelected(4)" id="PiedsItems">
-							<li ng-repeat="pied in menu.pieds"></li>
+							<li ng-repeat="pied in dataMenu.pieds"></li>
 						</ul>
 					</li>
 				</ul>
@@ -64,6 +64,7 @@
 		<script src="js/libs/AssimpJSONLoader.js"></script>
 		<script src="js/libs/OBJLoader.js"></script>
 		
+		<script src="js/angular.js"></script>
 		<script src="js/app.js"></script>
 
 		

@@ -1,12 +1,17 @@
 (function () {
   var app = angular.module('app', []);
 
-  app.controller('DataController', function () {
+  app.controller('DataMenuController', function () {
     var that = this;
-    this.menu.formes = [];
-    this.menu.dimensions = [];
-    this.menu.coloris = [];
-    this.menu.pieds = [];
+    this.formes = [{
+      name: "test forme"
+    }, {
+      name: "test 2 forme"
+    }];
+    this.dimensions = [];
+    this.coloris = [];
+    this.pieds = [];
+    //console.log(this.menu);
 
     //methods
     this.addElement = function (obj, type) {
