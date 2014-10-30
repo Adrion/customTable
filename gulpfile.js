@@ -42,6 +42,8 @@ gulp.task('scripts', function () {
     .pipe(gulp.dest('../table_U2Y_App/assets/www/js'));
   gulp.src('./js/libs/*js')
     .pipe(gulp.dest('../table_U2Y_App/assets/www/js/libs'));
+  gulp.src('./bower_components/angular/angular.min.js')
+    .pipe(gulp.dest('../table_U2Y_App/assets/www/js/libs'));
   gulp.src('./datas/*json')
     .pipe(gulp.dest('../table_U2Y_App/assets/www/datas'));
 });
