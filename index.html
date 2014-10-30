@@ -19,7 +19,7 @@
 					<li ng-class="{ active:panel.isSelected(1) }">
 						<h3 ng-click="panel.selectTab(1)">Formes</h3>
 						<ul ng-show="panel.isSelected(1)" id="FormesItems">
-							<li ng-repeat="forme in dataMenu.formes" ng-click="dataMenu.selectForm(forme.reference)">{{forme.name}}</li>
+							<li ng-repeat="forme in dataMenu.formes" ng-click="dataMenu.selectForme(forme.reference)">{{forme.name}}</li>
 						</ul>
 					</li>
 					<li ng-class="{ active:panel.isSelected(2) }">
@@ -31,7 +31,9 @@
 					<li ng-class="{ active:panel.isSelected(3) }">
 						<h3 ng-click="panel.selectTab(3)">Coloris du plan</h3>
 						<ul ng-show="panel.isSelected(3)" id="ColorisItems">
-							<li ng-repeat="colori in dataMenu.coloris"></li>
+							<li ng-click="dataMenu.selectColori(colori.url)" ng-repeat="colori in dataMenu.coloris">
+								<img ng-src="{{colori.url}}" width="50px" alt="test1"/>
+							</li>
 						</ul>
 					</li>
 					<!--li>Coloris du Bord</li-->
@@ -44,12 +46,6 @@
 				</ul>
 			</div>
 
-			<div id="test">
-				<img id="test1" src="object3D/textures/882/normalMap.jpg" width="50px" alt="test1"/>
-				<img id="test2" src="object3D/textures/882/diffuse.jpg" width="50px" alt="test2"/>
-				<img id="test3" src="object3D/textures/882/speculaire.jpg" width="50px" alt="test3"/>
-			</div>
-			
 			<div id="details">
 			</div>
 		

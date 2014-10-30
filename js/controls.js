@@ -1,22 +1,14 @@
 function initControls() {
   var btnRight = $('#right')[0],
-    btnLeft = $('#left')[0],
-    textures = $('#test img'),
-    models = $('#FormesItems li');
+    btnLeft = $('#left')[0];
 
   //Touch Events
   btnRight.addEventListener("touchstart", onHoldBtnRight, false);
   btnLeft.addEventListener("touchstart", onHoldBtnLeft, false);
-  textures.on('touchstart', function () {
-    loadTexture($(this).attr('src'));
-  });
 
   //Click Events
   btnRight.addEventListener("mousedown", onHoldBtnRight, false);
   btnLeft.addEventListener("mousedown", onHoldBtnLeft, false);
-  textures.on('click', function () {
-    loadTexture($(this).attr('src'));
-  });
 
   //Release Events
   document.addEventListener("touchend", onRelease, false);
