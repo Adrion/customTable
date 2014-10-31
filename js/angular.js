@@ -1,6 +1,7 @@
 (function () {
   var app = angular.module('app', []);
 
+  //gestion du Menu (Données)
   app.controller('DataMenuController', function () {
     var that = this;
 
@@ -20,7 +21,6 @@
       url: "object3D/textures/882/speculaire.jpg"
     }];
     this.pieds = [];
-    //console.log(this.menu);
 
     //methods
     this.addElement = function (obj, type) {
@@ -32,12 +32,12 @@
     };
 
     this.selectColori = function (textureUrl) {
-      console.log(textureUrl);
       loadTexture(textureUrl);
     };
 
   });
 
+  //Gestion de l'interface du menu
   app.controller('panelController', function () {
     this.tab = 1;
 

@@ -32,20 +32,28 @@ gulp.task('compass', function () {
     .pipe(gulp.dest('../table_U2Y_App/assets/www/css'));
 });
 
-// Browserify task
-
-gulp.task('scripts', function () {
-
-  //waiting for a solution like browserify.
-  //creation du bundle de mes scripts
-  gulp.src(['./js/mainLoader.js', './js/modelsLoader.js', './js/texturesLoader.js', './js/menu.js', './js/scene.js', './js/table.js', './js/controls.js'])
-    .pipe(concat('app.js'))
-    .pipe(gulp.dest('../table_U2Y_App/assets/www/js'));
+// Vendor task
+gulp.task('vendor', function () {
+  //styles angular-ui-mobile
+  gulp.src('./bower_components/mobile-angular-ui/dist/css/*.min.css')
+    .pipe(gulp.dest('../table_U2Y_App/assets/www/css'));
+  //fonts
+  gulp.src('./bower_components/mobile-angular-ui/dist/fonts/*.*')
+    .pipe(gulp.dest('../table_U2Y_App/assets/www/fonts'));
   //Deplacement des librairies utilisées
   gulp.src('./js/libs/*js')
     .pipe(gulp.dest('../table_U2Y_App/assets/www/js/libs'));
   gulp.src('./bower_components/angular/angular.min.*')
     .pipe(gulp.dest('../table_U2Y_App/assets/www/js/libs'));
+});
+
+// Browserify task
+gulp.task('scripts', function () {
+  //waiting for a solution like browserify.
+  //creation du bundle de mes scripts
+  gulp.src(['./js/mainLoader.js', './js/modelsLoader.js', './js/texturesLoader.js', './js/menu.js', './js/scene.js', './js/table.js', './js/controls.js'])
+    .pipe(concat('app.js'))
+    .pipe(gulp.dest('../table_U2Y_App/assets/www/js'));
   //Deplacement du script angular
   gulp.src('./js/angular.js')
     .pipe(gulp.dest('../table_U2Y_App/assets/www/js'));
@@ -86,4 +94,4 @@ gulp.task('watch', function () {
 });
 
 // Default Task
-gulp.task('default', ['delete', '3Dfiles', 'compass', 'scripts', 'views', 'watch']);
+gulp.task('default', ['delete', '3Dfiles', 'vendor', 'compass', 'scripts', 'views', 'watch']);
