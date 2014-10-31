@@ -6,11 +6,11 @@ var gulp = require('gulp'),
   browserify = require('gulp-browserify'),
   concat = require('gulp-concat'),
   minifyCSS = require('gulp-minify-css'),
-  del = require('delete');
+  del = require('del');
 
 //Clean task
 gulp.task('delete', function () {
-  del.sync('../table_U2Y_App/assets/www', {
+  del.sync(['../table_U2Y_App/assets/www/**/*.*', '!../table_U2Y_App/assets/www/cordova.js'], {
     force: true
   });
 });
@@ -37,15 +37,19 @@ gulp.task('compass', function () {
 gulp.task('scripts', function () {
 
   //waiting for a solution like browserify.
+  //creation du bundle de mes scripts
   gulp.src(['./js/mainLoader.js', './js/modelsLoader.js', './js/texturesLoader.js', './js/menu.js', './js/scene.js', './js/table.js', './js/controls.js'])
     .pipe(concat('app.js'))
     .pipe(gulp.dest('../table_U2Y_App/assets/www/js'));
+  //Deplacement des librairies utilisées
   gulp.src('./js/libs/*js')
     .pipe(gulp.dest('../table_U2Y_App/assets/www/js/libs'));
+  gulp.src('./bower_components/angular/angular.min.*')
+    .pipe(gulp.dest('../table_U2Y_App/assets/www/js/libs'));
+  //Deplacement du script angular
   gulp.src('./js/angular.js')
     .pipe(gulp.dest('../table_U2Y_App/assets/www/js'));
-  gulp.src('./bower_components/angular/angular.min.js')
-    .pipe(gulp.dest('../table_U2Y_App/assets/www/js/libs'));
+  //Deplacement des datas pour le local (temporaire)
   gulp.src('./datas/*json')
     .pipe(gulp.dest('../table_U2Y_App/assets/www/datas'));
 });
