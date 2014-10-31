@@ -15,8 +15,26 @@
 	</head>
 	<body onLoad="onLoad()" ng-app="app">
 
-		<div ng-swipe-right="toggle('mainSidebar', 'off')"
-        ng-swipe-left="toggle('mainSidebar', 'on')" id="interface" ng-controller="DataMenuController as dataMenu">
+		<div id="interface" style='height:100%' ng-controller="DataMenuController as dataMenu">
+			<div class="app">
+			  <div class="navbar navbar-app navbar-absolute-top">
+			    <!-- ... -->
+			  </div>
+
+			  <div class="navbar navbar-app navbar-absolute-bottom">
+			   <div class="navbar navbar-app navbar-absolute-bottom">
+			   	    <div class="btn-group nav-tabs justified">
+			            <a  href="#/route1" active-class="active" class="btn btn-navbar btn-icon-only"><i class="fa fa-home fa-navbar"></i></a>
+			      	    <a href="#/route2" class="btn btn-navbar btn-icon-only"><i class="fa fa-list fa-navbar"></i></a>
+			    	</div>
+			    </div>
+			  </div>
+
+			  <div id="container" class="app-body">
+
+			  </div>
+			</div>
+
 
 			<div class="buttons" id="left"></div>
 			<div class="buttons" id="right"></div>
@@ -53,12 +71,7 @@
 			</div>
 
 
-		    <div class="navbar navbar-app navbar-absolute-bottom">
-		   	    <div class="btn-group justified">
-		            <a ng-click="toggle('mainSidebar')" href="#/route1" class="btn btn-navbar btn-icon-only"><i class="fa fa-home fa-navbar"></i></a>
-		      	    <a href="#/route2" class="btn btn-navbar btn-icon-only"><i class="fa fa-list fa-navbar"></i></a>
-		    	</div>
-		    </div>
+		    
 			
 
 			<!-- <div ng-controller="panelController as panel" id="menuU2Y">

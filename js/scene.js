@@ -10,10 +10,7 @@
 
 			function initScene() {
 
-			  container = document.createElement('div');
-			  container.setAttribute("id", "container");
-			  document.body.appendChild(container);
-
+			  container = document.getElementById('container');
 			  scene = new THREE.Scene();
 
 			  renderer = new THREE.WebGLRenderer();
