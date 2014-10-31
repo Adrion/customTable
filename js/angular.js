@@ -1,5 +1,5 @@
 (function () {
-  var app = angular.module('app', []);
+  var app = angular.module('app', ["mobile-angular-ui"]);
 
   //gestion du Menu (Données)
   app.controller('DataMenuController', function () {
