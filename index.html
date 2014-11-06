@@ -24,13 +24,13 @@
 			   <div class="navbar navbar-app navbar-absolute-bottom">
 			   	    <div class="btn-group nav-tabs justified">
 			            <a  href="#/route1" active-class="active" class="btn btn-navbar btn-icon-only"><i class="fa fa-home fa-navbar"></i></a>
-			      	    <a toggle="toggle" target="mainSidebar" href="#/route2" class="btn btn-navbar btn-icon-only"><i class="fa fa-list fa-navbar"></i></a>
+			      	    <a ng-click="toggle('mainSidebar')" active-class="active" href="#/route2" class="btn btn-navbar btn-icon-only"><i class="fa fa-list fa-navbar"></i></a>
 			    	</div>
 			    </div>
 
 			  <div id="container" class="app-body">
 			  </div>
-				<div  ng-controller="panelController as panel" class="sidebar sidebar-right" toggleable active-class="hide" id="mainSidebar">
+				<div  ng-controller="panelController as panel" class="sidebar sidebar-right" toggleable inactive-class="hide" id="mainSidebar">
 				  <h1 class="app-name">My App</h1>
 
 				  <div class="scrollable">
