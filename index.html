@@ -66,50 +66,16 @@
 				</div>
 			</div>
 
-
-			<div class="buttons" id="left"></div>
-			<div class="buttons" id="right"></div>
-			
-			<!-- Sidebars -->
-
-
-
-		    
-			
-
-			<!-- <div ng-controller="panelController as panel" id="menuU2Y">
-				<h2>Menu</h2>
-				<ul>
-					<li ng-class="{ active:panel.isSelected(1) }">
-						<h3 ng-click="panel.selectTab(1)">Formes</h3>
-						<ul ng-show="panel.isSelected(1)" id="FormesItems">
-							<li ng-repeat="forme in dataMenu.formes" ng-click="dataMenu.selectForme(forme.reference)">{{forme.name}}</li>
-						</ul>
-					</li>
-					<li ng-class="{ active:panel.isSelected(2) }">
-						<h3 ng-click="panel.selectTab(2)">Dimensions</h3>
-						<ul ng-show="panel.isSelected(2)" id="DimensionsItems">
-							<li ng-repeat="dimension in dataMenu.dimensions"></li>
-						</ul>
-					</li>
-					<li ng-class="{ active:panel.isSelected(3) }">
-						<h3 ng-click="panel.selectTab(3)">Coloris du plan</h3>
-						<ul ng-show="panel.isSelected(3)" id="ColorisItems">
-							<li ng-click="dataMenu.selectColori(colori.url)" ng-repeat="colori in dataMenu.coloris">
-								<img ng-src="{{colori.url}}" width="50px" alt="test1"/>
-							</li>
-						</ul>
-					</li>
-					<li ng-class="{ active:panel.isSelected(4) }">
-						<h3 ng-click="panel.selectTab(4)">Pieds</h3>
-						<ul ng-show="panel.isSelected(4)" id="PiedsItems">
-							<li ng-repeat="pied in dataMenu.pieds"></li>
-						</ul>
-					</li>
-				</ul>
-			</div> -->
+			<div ng-mouseup="rotation.stop()" ng-controller="rotationController as rotation">
+				<div ng-mousedown="rotation.left()" class="buttons" id="left"></div>
+				<div ng-mousedown="rotation.right()" class="buttons" id="right"></div>
+			</div>
 		
 		</div>
+
+
+
+
 		<script type="text/javascript">
 		   if (document.URL.indexOf('file:///C:/') === -1 && document.URL.indexOf('http://') === -1 && document.URL.indexOf('https://') === -1) {
 		        document.write("<script src='cordova.js'><\/script>");

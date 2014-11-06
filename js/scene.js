@@ -119,6 +119,7 @@
 			  camera.position.x = radius * Math.sin(THREE.Math.degToRad(theta));
 			  camera.position.z = radius * Math.cos(THREE.Math.degToRad(theta));
 			  camera.lookAt(table.position);
+			  orbitcamera.lookAt(table.position);
 
 			  renderer.render(scene, activeCamera);
 

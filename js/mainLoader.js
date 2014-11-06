@@ -27,7 +27,6 @@
   function mainInit(catalogueJSON) {
     initMenu(catalogueJSON);
     initModelLoader(catalogueJSON);
-    initControls();
     initScene();
     animate();
   }

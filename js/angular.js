@@ -46,7 +46,6 @@
 
     this.selectCamera = function (nomCamera) {
       activeCamera = window[nomCamera];
-      console.log(activeCamera);
     };
   });
 
@@ -63,5 +62,17 @@
     };
   });
 
-  var gems = [];
+  app.controller('rotationController', function () {
+    this.left = function () {
+      pressedLeft = 1;
+    }
+    this.right = function () {
+      pressedRight = 1;
+    }
+    this.stop = function () {
+      pressedRight = 0;
+      pressedLeft = 0;
+    }
+  });
+
 })();

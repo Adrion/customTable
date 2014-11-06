@@ -51,7 +51,7 @@ gulp.task('vendor', function () {
 gulp.task('scripts', function () {
   //waiting for a solution like browserify.
   //creation du bundle de mes scripts
-  gulp.src(['./js/mainLoader.js', './js/modelsLoader.js', './js/texturesLoader.js', './js/menu.js', './js/scene.js', './js/table.js', './js/controls.js'])
+  gulp.src(['./js/mainLoader.js', './js/modelsLoader.js', './js/texturesLoader.js', './js/menu.js', './js/scene.js', './js/table.js'])
     .pipe(concat('app.js'))
     .pipe(gulp.dest('../table_U2Y_App/assets/www/js'));
   //Deplacement du script angular
