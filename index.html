@@ -21,18 +21,43 @@
 			    <!-- ... -->
 			  </div>
 
-			  <div class="navbar navbar-app navbar-absolute-bottom">
 			   <div class="navbar navbar-app navbar-absolute-bottom">
 			   	    <div class="btn-group nav-tabs justified">
 			            <a  href="#/route1" active-class="active" class="btn btn-navbar btn-icon-only"><i class="fa fa-home fa-navbar"></i></a>
-			      	    <a href="#/route2" class="btn btn-navbar btn-icon-only"><i class="fa fa-list fa-navbar"></i></a>
+			      	    <a toggle="toggle" target="mainSidebar" href="#/route2" class="btn btn-navbar btn-icon-only"><i class="fa fa-list fa-navbar"></i></a>
 			    	</div>
 			    </div>
-			  </div>
 
 			  <div id="container" class="app-body">
-
 			  </div>
+				<div  ng-controller="panelController as panel" class="sidebar sidebar-right" toggleable inactive-class="hide" id="mainSidebar">
+				  <h1 class="app-name">My App</h1>
+
+				  <div class="scrollable">
+				    <div class="scrollable-content">
+				      <div class="list-group" toggle="off" bubble target="mainSidebar">
+				        <a ng-class="{ active:panel.isSelected(1) }" ng-click="panel.selectTab(1)" class="list-group-item" href="#/"><i class="fa fa-chevron-left"></i>  Formes </a>
+				        <ul ng-show="panel.isSelected(1)" id="FormesItems">
+								<li ng-repeat="forme in dataMenu.formes" ng-click="dataMenu.selectForme(forme.reference)">{{forme.name}}</li>
+						</ul>
+				        <a ng-click="panel.selectTab(2)"  ng-class="{ active:panel.isSelected(2) }" class="list-group-item" href="#/"><i class="fa fa-chevron-left"></i>  Dimensions </a>
+				        <ul ng-show="panel.isSelected(2)" id="DimensionsItems">
+							<li ng-repeat="dimension in dataMenu.dimensions"></li>
+						</ul>
+				        <a ng-click="panel.selectTab(3)" ng-class="{ active:panel.isSelected(3) }" class="list-group-item" href="#/"><i class="fa fa-chevron-left"></i>  Coloris du plan </a>
+				        <ul ng-show="panel.isSelected(3)" id="ColorisItems">
+								<li ng-click="dataMenu.selectColori(colori.url)" ng-repeat="colori in dataMenu.coloris">
+									<img ng-src="{{colori.url}}" width="50px" alt="test1"/>
+								</li>
+							</ul>
+						<a ng-click="panel.selectTab(4)" ng-class="{ active:panel.isSelected(4) }" class="list-group-item" href="#/"><i class="fa fa-chevron-left"></i> Pieds </a>
+				        <ul ng-show="panel.isSelected(4)" id="PiedsItems">
+								<li ng-repeat="pied in dataMenu.pieds"></li>
+							</ul>
+				      </div>
+				    </div>
+				  </div>
+				</div>
 			</div>
 
 
@@ -41,34 +66,6 @@
 			
 			<!-- Sidebars -->
 
-			<div  ng-controller="panelController as panel" class="sidebar sidebar-right" toggleable parent-active-class="sidebar-right-in" id="mainSidebar">
-			  <h1 class="app-name">My App</h1>
-
-			  <div class="scrollable">
-			    <div class="scrollable-content">
-			      <div class="list-group" toggle="off" bubble target="mainSidebar">
-			        <a ng-class="{ active:panel.isSelected(1) }" ng-click="panel.selectTab(1)" class="list-group-item" href="#/"><i class="fa fa-chevron-left"></i>  Formes </a>
-			        <ul ng-show="panel.isSelected(1)" id="FormesItems">
-							<li ng-repeat="forme in dataMenu.formes" ng-click="dataMenu.selectForme(forme.reference)">{{forme.name}}</li>
-					</ul>
-			        <a ng-click="panel.selectTab(2)"  ng-class="{ active:panel.isSelected(2) }" class="list-group-item" href="#/"><i class="fa fa-chevron-left"></i>  Dimensions </a>
-			        <ul ng-show="panel.isSelected(2)" id="DimensionsItems">
-						<li ng-repeat="dimension in dataMenu.dimensions"></li>
-					</ul>
-			        <a ng-click="panel.selectTab(3)" ng-class="{ active:panel.isSelected(3) }" class="list-group-item" href="#/"><i class="fa fa-chevron-left"></i>  Coloris du plan </a>
-			        <ul ng-show="panel.isSelected(3)" id="ColorisItems">
-							<li ng-click="dataMenu.selectColori(colori.url)" ng-repeat="colori in dataMenu.coloris">
-								<img ng-src="{{colori.url}}" width="50px" alt="test1"/>
-							</li>
-						</ul>
-					<a ng-click="panel.selectTab(4)" ng-class="{ active:panel.isSelected(4) }" class="list-group-item" href="#/"><i class="fa fa-chevron-left"></i> Pieds </a>
-			        <ul ng-show="panel.isSelected(4)" id="PiedsItems">
-							<li ng-repeat="pied in dataMenu.pieds"></li>
-						</ul>
-			      </div>
-			    </div>
-			  </div>
-			</div>
 
 
 		    
