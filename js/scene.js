@@ -5,7 +5,7 @@
 			var pressedLeft = 0,
 			  pressedRight = 0;
 
-			var radius = 120,
+			var radius = 200,
 			  theta = 0;
 
 			function initScene() {
@@ -27,7 +27,7 @@
 			  camera = new THREE.PerspectiveCamera(70, window.innerWidth / window.innerHeight, 1, 10000);
 
 			  orbitcamera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 20000);
-			  orbitcamera.position.set(120, 6, 0);
+			  orbitcamera.position.set(-70, 6, -205);
 			  scene.add(orbitcamera);
 
 			  window.addEventListener('resize', onWindowResize, false);
@@ -88,7 +88,6 @@
 			}
 
 			function onWindowResize() {
-
 			  camera.aspect = window.innerWidth / window.innerHeight;
 			  camera.updateProjectionMatrix();
 
@@ -96,13 +95,11 @@
 			  orbitcamera.updateProjectionMatrix();
 
 			  renderer.setSize(window.innerWidth, window.innerHeight);
-
 			}
 
 			 //
 
 			function animate() {
-
 			  requestAnimationFrame(animate);
 			  render();
 			  controls.update();
@@ -120,13 +117,9 @@
 			    theta += 0.5;
 			  }
 			  camera.position.x = radius * Math.sin(THREE.Math.degToRad(theta));
-			  camera.position.y = 50;
 			  camera.position.z = radius * Math.cos(THREE.Math.degToRad(theta));
-			  camera.lookAt(scene.position);
-			  //camera2.lookAt( scene.position );
+			  camera.lookAt(table.position);
 
-			  //renderer.render( scene, camera );
-			  // Render for testing
 			  renderer.render(scene, activeCamera);
 
 			}
