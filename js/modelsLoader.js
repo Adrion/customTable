@@ -38,6 +38,7 @@ function loaderTableCallback(plt) {
 
   table.add(plate);
   loadTexture('object3D/textures/882/normalMap.jpg');
+  updateLegsPositions(plate);
 }
 
 function loaderLegCallback(jsonModel) {
@@ -71,6 +72,7 @@ function loaderLegCallback(jsonModel) {
   table.add(legsGroup);
 
   updateTablePosition(table);
+  updateLegsPositions(plate);
 }
 
 function updateLegsPositions(plate) {
