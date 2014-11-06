@@ -56,6 +56,10 @@
 				        <ul ng-show="panel.isSelected(4)" id="PiedsItems">
 								<li ng-repeat="pied in dataMenu.pieds"></li>
 							</ul>
+						<a ng-click="panel.selectTab(5)" ng-class="{ active:panel.isSelected(5) }" class="list-group-item" href="#/"><i class="fa fa-chevron-left"></i> Cameras </a>
+				        <ul ng-show="panel.isSelected(5)" id="CamerasItems">
+								<li ng-click="dataMenu.selectCamera(camera.nomCamera)" ng-repeat="camera in dataMenu.cameras">{{camera.label}}</li>
+							</ul>
 				      </div>
 				    </div>
 				  </div>

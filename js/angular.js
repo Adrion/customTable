@@ -21,7 +21,16 @@
       url: "object3D/textures/882/speculaire.jpg"
     }];
     this.pieds = [];
-
+    this.cameras = [{
+      label: "camera rotative",
+      nomCamera: "camera"
+    }, {
+      label: "camera libre",
+      nomCamera: "orbitcamera"
+    }, {
+      label: "camera immersive",
+      nomCamera: "oculuscamera"
+    }];
     //methods
     this.addElement = function (obj, type) {
       that.menu[type].push(obj);
@@ -35,6 +44,10 @@
       loadTexture(textureUrl);
     };
 
+    this.selectCamera = function (nomCamera) {
+      activeCamera = window[nomCamera];
+      console.log(activeCamera);
+    };
   });
 
   //Gestion de l'interface du menu

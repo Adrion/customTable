@@ -1,5 +1,5 @@
 			var container, stats, GROUND;
-			var camera, orbitcamera, scene, projector, raycaster, renderer, controls;
+			var activeCamera, camera, orbitcamera, scene, projector, raycaster, renderer, controls;
 
 			var skyboxMesh, skyboxWidth;
 			var pressedLeft = 0,
@@ -83,6 +83,8 @@
 			  // Add OrbitControls so that we can pan around with the mouse.
 			  controls = new THREE.OrbitControls(orbitcamera, renderer.domElement);
 
+			  //set default camera
+			  activeCamera = orbitcamera;
 			}
 
 			function onWindowResize() {
@@ -124,8 +126,7 @@
 			  //camera2.lookAt( scene.position );
 
 			  //renderer.render( scene, camera );
-
 			  // Render for testing
-			  renderer.render(scene, orbitcamera);
+			  renderer.render(scene, activeCamera);
 
 			}
