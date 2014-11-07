@@ -10,7 +10,7 @@ var gulp = require('gulp'),
 
 //Clean task
 gulp.task('delete', function () {
-  del.sync(['../table_U2Y_App/assets/www/**/*.*', '!../table_U2Y_App/assets/www/cordova.js'], {
+  del.sync(['../table_U2Y_App/assets/www/**/*.*', '!../table_U2Y_App/assets/www/cordova.js', '!../table_U2Y_App/assets/www/Insomnia.js'], {
     force: true
   });
 });

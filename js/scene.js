@@ -2,8 +2,9 @@
 			var activeCamera, oculuscamera, camera, orbitcamera, scene, projector, raycaster, renderer, controls;
 
 			var skyboxMesh, skyboxWidth;
-			var pressedLeft = 0,
-			  pressedRight = 0;
+			var pressedLeft = false,
+			  pressedRight = false,
+			  autoRotate = false;
 
 			var radius = 200,
 			  theta = 0;
@@ -110,7 +111,7 @@
 			  controls = new THREE.OrbitControls(orbitcamera, renderer.domElement);
 
 			  //set default camera
-			  activeCamera = oculuscamera;
+			  activeCamera = camera;
 			}
 
 			function onWindowResize() {
@@ -136,18 +137,19 @@
 			}
 
 			function render() {
+			  if (pressedRight) {
+			    theta -= 3;
+			  } else if (pressedLeft) {
+			    theta += 3;
+			  } else {
+			    theta += 0.5;
+			  }
 			  if (activeCamera == oculuscamera) {
 			    effect.render(scene, activeCamera);
-
+			    if (autoRotate) {
+			      table.rotation.y += 0.01;
+			    }
 			  } else {
-			    if (pressedRight) {
-			      theta -= 3;
-			    }
-			    if (pressedLeft) {
-			      theta += 3;
-			    } else {
-			      theta += 0.5;
-			    }
 			    camera.position.x = radius * Math.sin(THREE.Math.degToRad(theta));
 			    camera.position.z = radius * Math.cos(THREE.Math.degToRad(theta));
 			    camera.lookAt(table.position);

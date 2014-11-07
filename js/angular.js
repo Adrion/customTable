@@ -48,21 +48,30 @@
       activeCamera = window[nomCamera];
 
       //On désactive la veille lorsque l'application est en mode stéreo.
-      if (nomCamera == "oculuscamera") window.plugins.insomnia.keepAwake();
-      else window.plugins.insomnia.allowSleepAgain();
+      if (nomCamera == "oculuscamera") {
+        window.addEventListener('click', that.switchAutoRotate, false);
+        window.plugins.insomnia.keepAwake();
+      } else {
+        window.removeEventListener('click', that.switchAutoRotate);
+        window.plugins.insomnia.allowSleepAgain();
+      }
     };
 
     //gestion des controles de rotation
     this.left = function () {
-      pressedLeft = 1;
-    }
+      pressedLeft = true;
+    };
     this.right = function () {
-      pressedRight = 1;
-    }
+      pressedRight = true;
+    };
     this.stop = function () {
-      pressedRight = 0;
-      pressedLeft = 0;
-    }
+      pressedRight = false;
+      pressedLeft = false;
+    };
+    this.switchAutoRotate = function () {
+      autoRotate = !autoRotate;
+    };
+
   });
 
   //Gestion de l'interface du menu
