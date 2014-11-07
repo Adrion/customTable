@@ -47,6 +47,18 @@
     this.selectCamera = function (nomCamera) {
       activeCamera = window[nomCamera];
     };
+
+    //controls
+    this.left = function () {
+      pressedLeft = 1;
+    }
+    this.right = function () {
+      pressedRight = 1;
+    }
+    this.stop = function () {
+      pressedRight = 0;
+      pressedLeft = 0;
+    }
   });
 
   //Gestion de l'interface du menu
@@ -63,16 +75,7 @@
   });
 
   app.controller('rotationController', function () {
-    this.left = function () {
-      pressedLeft = 1;
-    }
-    this.right = function () {
-      pressedRight = 1;
-    }
-    this.stop = function () {
-      pressedRight = 0;
-      pressedLeft = 0;
-    }
+
   });
 
 })();

@@ -15,7 +15,7 @@
 	</head>
 	<body onLoad="onLoad()" ng-app="app">
 
-		<div id="interface" style='height:100%' ng-controller="DataMenuController as dataMenu">
+		<div id="interface" ng-mouseup="dataMenu.stop()" style='height:100%' ng-controller="DataMenuController as dataMenu">
 			<div class="app">
 			  <div class="navbar navbar-app navbar-absolute-top">
 			      <div class="navbar-brand navbar-brand-center">
@@ -64,13 +64,10 @@
 				    </div>
 				  </div>
 				</div>
+				<div ng-mousedown="dataMenu.left()" class="buttons" id="left"></div>
+				<div ng-mousedown="dataMenu.right()" class="buttons" id="right"></div>
 			</div>
 
-			<div ng-mouseup="rotation.stop()" ng-controller="rotationController as rotation">
-				<div ng-mousedown="rotation.left()" class="buttons" id="left"></div>
-				<div ng-mousedown="rotation.right()" class="buttons" id="right"></div>
-			</div>
-		
 		</div>
 
 
