@@ -115,7 +115,7 @@
 
 			  // Add OrbitControls so that we can pan around with the mouse.
 			  controls = new THREE.OrbitControls(orbitcamera, renderer.domElement);
-
+			  controls.maxDistance = 250;
 			  //set default camera
 			  activeCamera = orbitcamera;
 			}
