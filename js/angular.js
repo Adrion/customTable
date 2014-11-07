@@ -31,6 +31,7 @@
       label: "camera immersive",
       nomCamera: "oculuscamera"
     }];
+    this.showControls = false;
     //methods
     this.addElement = function (obj, type) {
       that.menu[type].push(obj);
@@ -46,6 +47,10 @@
 
     this.selectCamera = function (nomCamera) {
       activeCamera = window[nomCamera];
+
+      //on affiche les boutons de rotation uniquement avec la camera rotative.
+      if (nomCamera == "camera") that.showControls = true;
+      else that.showControls = false;
 
       //On désactive la veille lorsque l'application est en mode stéreo.
       if (nomCamera == "oculuscamera") {

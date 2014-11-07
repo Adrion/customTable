@@ -64,8 +64,8 @@
 				    </div>
 				  </div>
 				</div>
-				<div ng-mousedown="dataMenu.left()" class="buttons" id="left"></div>
-				<div ng-mousedown="dataMenu.right()" class="buttons" id="right"></div>
+				<div ng-show="dataMenu.showControls" ng-mousedown="dataMenu.left()" class="buttons" id="left">L</div>
+				<div ng-show="dataMenu.showControls" ng-mousedown="dataMenu.right()" class="buttons" id="right">R</div>
 			</div>
 
 		</div>
