@@ -46,9 +46,13 @@
 
     this.selectCamera = function (nomCamera) {
       activeCamera = window[nomCamera];
+
+      //On désactive la veille lorsque l'application est en mode stéreo.
+      if (nomCamera == "oculuscamera") window.plugins.insomnia.keepAwake();
+      else window.plugins.insomnia.allowSleepAgain();
     };
 
-    //controls
+    //gestion des controles de rotation
     this.left = function () {
       pressedLeft = 1;
     }
@@ -72,10 +76,6 @@
     this.isSelected = function (checkTab) {
       return this.tab === checkTab;
     };
-  });
-
-  app.controller('rotationController', function () {
-
   });
 
 })();

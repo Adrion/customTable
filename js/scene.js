@@ -48,17 +48,13 @@
 
 			  //gestion de l'orientation
 			  function setOrientationControls(e) {
-			    if (!e.alpha) {
-			      return;
-			    }
-
 			    oculuscontrols = new THREE.DeviceOrientationControls(oculuscamera, true);
 			    oculuscontrols.connect();
 			    oculuscontrols.update();
 
 			    window.removeEventListener('deviceorientation', setOrientationControls);
 			  }
-			  window.addEventListener('deviceorientation', setOrientationControls, true);
+			  window.addEventListener('deviceorientation', setOrientationControls, false);
 
 			  window.addEventListener('resize', onWindowResize, false);
 
