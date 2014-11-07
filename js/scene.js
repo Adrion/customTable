@@ -111,7 +111,7 @@
 			  controls = new THREE.OrbitControls(orbitcamera, renderer.domElement);
 
 			  //set default camera
-			  activeCamera = camera;
+			  activeCamera = orbitcamera;
 			}
 
 			function onWindowResize() {
