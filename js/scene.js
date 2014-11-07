@@ -156,7 +156,7 @@
 			    camera.position.z = radius * Math.cos(THREE.Math.degToRad(theta));
 			    camera.lookAt(table.position);
 			    orbitcamera.lookAt(table.position);
-
+			    renderer.setViewport(0, 0, window.innerWidth, window.innerHeight);
 			    renderer.render(scene, activeCamera);
 			  }
 			}
