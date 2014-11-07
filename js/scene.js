@@ -1,5 +1,5 @@
-			var container, stats, GROUND;
-			var activeCamera, camera, orbitcamera, scene, projector, raycaster, renderer, controls;
+			var container, stats, GROUND, effect;
+			var activeCamera, oculuscamera, camera, orbitcamera, scene, projector, raycaster, renderer, controls;
 
 			var skyboxMesh, skyboxWidth;
 			var pressedLeft = 0,
@@ -14,9 +14,7 @@
 			  scene = new THREE.Scene();
 
 			  renderer = new THREE.WebGLRenderer();
-			  renderer.setClearColor(0xf0f0f0);
 			  renderer.setSize(window.innerWidth, window.innerHeight);
-			  renderer.sortObjects = false;
 			  container.appendChild(renderer.domElement);
 
 			  stats = new Stats();
@@ -29,6 +27,38 @@
 			  orbitcamera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 20000);
 			  orbitcamera.position.set(-70, 6, -205);
 			  scene.add(orbitcamera);
+
+			  //Cardboard Camera
+			  effect = new THREE.StereoEffect(renderer);
+			  effect.setSize(window.innerWidth, window.innerHeight);
+			  oculuscamera = new THREE.PerspectiveCamera(90, 1, 0.001, 700);
+			  oculuscamera.position.set(-70, -50, -105);
+			  scene.add(oculuscamera);
+
+			  //controls CbCamera
+			  oculuscontrols = new THREE.OrbitControls(oculuscamera, renderer.domElement);
+			  oculuscontrols.rotateUp(Math.PI / 4);
+			  oculuscontrols.target.set(
+			    oculuscamera.position.x + 0.1,
+			    oculuscamera.position.y,
+			    oculuscamera.position.z
+			  );
+			  oculuscontrols.noZoom = true;
+			  oculuscontrols.noPan = true;
+
+			  //gestion de l'orientation
+			  function setOrientationControls(e) {
+			    if (!e.alpha) {
+			      return;
+			    }
+
+			    oculuscontrols = new THREE.DeviceOrientationControls(oculuscamera, true);
+			    oculuscontrols.connect();
+			    oculuscontrols.update();
+
+			    window.removeEventListener('deviceorientation', setOrientationControls);
+			  }
+			  window.addEventListener('deviceorientation', setOrientationControls, true);
 
 			  window.addEventListener('resize', onWindowResize, false);
 
@@ -84,7 +114,7 @@
 			  controls = new THREE.OrbitControls(orbitcamera, renderer.domElement);
 
 			  //set default camera
-			  activeCamera = orbitcamera;
+			  activeCamera = oculuscamera;
 			}
 
 			function onWindowResize() {
@@ -94,33 +124,39 @@
 			  orbitcamera.aspect = window.innerWidth / window.innerHeight;
 			  orbitcamera.updateProjectionMatrix();
 
-			  renderer.setSize(window.innerWidth, window.innerHeight);
-			}
+			  oculuscamera.aspect = window.innerWidth / window.innerHeight;
+			  oculuscamera.updateProjectionMatrix();
 
-			 //
+			  renderer.setSize(window.innerWidth, window.innerHeight);
+			  effect.setSize(window.innerWidth, window.innerHeight);
+			}
 
 			function animate() {
 			  requestAnimationFrame(animate);
 			  render();
 			  controls.update();
+			  oculuscontrols.update();
 			  stats.update();
 			}
 
 			function render() {
+			  if (activeCamera == oculuscamera) {
+			    effect.render(scene, activeCamera);
 
-			  if (pressedRight) {
-			    theta -= 3;
-			  }
-			  if (pressedLeft) {
-			    theta += 3;
 			  } else {
-			    theta += 0.5;
+			    if (pressedRight) {
+			      theta -= 3;
+			    }
+			    if (pressedLeft) {
+			      theta += 3;
+			    } else {
+			      theta += 0.5;
+			    }
+			    camera.position.x = radius * Math.sin(THREE.Math.degToRad(theta));
+			    camera.position.z = radius * Math.cos(THREE.Math.degToRad(theta));
+			    camera.lookAt(table.position);
+			    orbitcamera.lookAt(table.position);
+
+			    renderer.render(scene, activeCamera);
 			  }
-			  camera.position.x = radius * Math.sin(THREE.Math.degToRad(theta));
-			  camera.position.z = radius * Math.cos(THREE.Math.degToRad(theta));
-			  camera.lookAt(table.position);
-			  orbitcamera.lookAt(table.position);
-
-			  renderer.render(scene, activeCamera);
-
 			}
