@@ -32,7 +32,7 @@
 
 			  <div id="container" class="app-body">
 			  </div>
-				<div  ng-controller="panelController as panel" class="sidebar sidebar-right" toggleable inactive-class="hide" id="mainSidebar">
+				<div ng-controller="panelController as panel" class="sidebar sidebar-right hide" toggleable inactive-class="hide" id="mainSidebar">
 				  <h1 class="app-name">My App</h1>
 
 				  <div class="scrollable">
@@ -40,7 +40,7 @@
 				      <div class="list-group" bubble target="mainSidebar">
 				        <a ng-class="{ active:panel.isSelected(1) }" ng-click="panel.selectTab(1)" class="list-group-item" href="#/"><i class="fa fa-chevron-left"></i>  Formes </a>
 				        <ul ng-show="panel.isSelected(1)" id="FormesItems">
-								<li class="list-group-item" ng-repeat="forme in dataMenu.formes" ng-click="dataMenu.selectForme(forme.reference)">{{forme.name}}</li>
+								<li class="list-group-item" ng-repeat="forme in dataMenu.formes" ng-click="toggle('mainSidebar', panel.checkToggle()); dataMenu.selectForme(forme.reference); ">{{forme.name}}</li>
 						</ul>
 				        <a ng-click="panel.selectTab(2)"  ng-class="{ active:panel.isSelected(2) }" class="list-group-item" href="#/"><i class="fa fa-chevron-left"></i>  Dimensions </a>
 				        <ul ng-show="panel.isSelected(2)" id="DimensionsItems">
@@ -48,7 +48,7 @@
 						</ul>
 				        <a ng-click="panel.selectTab(3)" ng-class="{ active:panel.isSelected(3) }" class="list-group-item" href="#/"><i class="fa fa-chevron-left"></i>  Coloris du plan </a>
 				        <ul ng-show="panel.isSelected(3)" id="ColorisItems">
-								<li ng-click="dataMenu.selectColori(colori.url)" ng-repeat="colori in dataMenu.coloris">
+								<li ng-click="toggle('mainSidebar', panel.checkToggle()); dataMenu.selectColori(colori.url)" ng-repeat="colori in dataMenu.coloris">
 									<img ng-src="{{colori.url}}" width="50px" alt="test1"/>
 								</li>
 							</ul>
@@ -58,7 +58,7 @@
 							</ul>
 						<a ng-click="panel.selectTab(5)" ng-class="{ active:panel.isSelected(5) }" class="list-group-item" href="#/"><i class="fa fa-chevron-left"></i> Cameras </a>
 				        <ul ng-show="panel.isSelected(5)" id="CamerasItems">
-								<li class="list-group-item" ng-click="dataMenu.selectCamera(camera.nomCamera)" ng-repeat="camera in dataMenu.cameras">{{camera.label}}</li>
+								<li class="list-group-item" ng-click="toggle('mainSidebar', panel.checkToggle()); dataMenu.selectCamera(camera.nomCamera)" ng-repeat="camera in dataMenu.cameras">{{camera.label}}</li>
 							</ul>
 				      </div>
 				    </div>

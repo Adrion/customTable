@@ -82,13 +82,21 @@
   //Gestion de l'interface du menu
   app.controller('panelController', function () {
     this.tab = 1;
-
+    this.isDisabled
     this.selectTab = function (setTab) {
       this.tab = setTab;
     };
 
     this.isSelected = function (checkTab) {
       return this.tab === checkTab;
+    };
+
+    this.checkToggle = function () {
+      //toggle menu on item only with smartphones.
+      if (isDevice)
+        return 'off'
+      else
+        return 'on'
     };
   });
 
