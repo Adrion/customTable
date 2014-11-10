@@ -15,7 +15,7 @@
 	</head>
 	<body onLoad="onLoad()" ng-app="app">
 
-		<div id="interface" ng-mouseup="dataMenu.stop()" style='height:100%' ng-controller="DataMenuController as dataMenu">
+		<div id="interface" ng-mouseup="dataMenu.stop()"  ng-controller="DataMenuController as dataMenu">
 			<div class="app">
 			  <div class="navbar navbar-app navbar-absolute-top">
 			      <div class="navbar-brand navbar-brand-center">
@@ -31,13 +31,11 @@
 			    </div>
 
 			  <div id="container" class="app-body">
-			  </div>
 				<div ng-controller="panelController as panel" class="sidebar sidebar-right hide" toggleable inactive-class="hide" id="mainSidebar">
-				  <h1 class="app-name">My App</h1>
 
 				  <div class="scrollable">
 				    <div class="scrollable-content">
-				      <div class="list-group" bubble target="mainSidebar">
+				      <div bubble target="mainSidebar">
 				        <a ng-class="{ active:panel.isSelected(1) }" ng-click="panel.selectTab(1)" class="list-group-item" href="#/"><i class="fa fa-chevron-left"></i>  Formes </a>
 				        <ul ng-show="panel.isSelected(1)" id="FormesItems">
 								<li class="list-group-item" ng-repeat="forme in dataMenu.formes" ng-click="toggle('mainSidebar', panel.checkToggle()); dataMenu.selectForme(forme.reference); ">{{forme.name}}</li>
@@ -64,6 +62,7 @@
 				    </div>
 				  </div>
 				</div>
+			  </div>
 				<div ng-show="dataMenu.showControls" ng-mousedown="dataMenu.left()" class="buttons" id="left">L</div>
 				<div ng-show="dataMenu.showControls" ng-mousedown="dataMenu.right()" class="buttons" id="right">R</div>
 			</div>

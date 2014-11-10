@@ -1,4 +1,12 @@
-#test{
-	position: absolute;
-	right: 40%;
+#mainSidebar{
+	margin: 50px 0;
+	padding: 50px 0;
+
+	ul{
+		margin: 0;
+		.list-group-item{
+			background-color: #FEF;
+		}
+	}
+	
 }

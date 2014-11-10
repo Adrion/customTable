@@ -82,9 +82,11 @@
   //Gestion de l'interface du menu
   app.controller('panelController', function () {
     this.tab = 1;
-    this.isDisabled
     this.selectTab = function (setTab) {
-      this.tab = setTab;
+      if (this.tab === setTab)
+        this.tab = 0;
+      else
+        this.tab = setTab;
     };
 
     this.isSelected = function (checkTab) {
