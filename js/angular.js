@@ -6,11 +6,11 @@
     var that = this;
 
     this.formes = [{
-      reference: "PTSPC1",
-      name: "test forme"
+      reference: "PTELC1A",
+      name: "Plan table elipse"
     }, {
-      reference: "une deuxieme reference",
-      name: "test 2 forme"
+      reference: "PTSPC1",
+      name: "Plan table rectangle"
     }];
     this.dimensions = [];
     this.coloris = [{
@@ -20,7 +20,13 @@
     }, {
       url: "object3D/textures/882/speculaire.jpg"
     }];
-    this.pieds = [];
+    this.pieds = [{
+      reference: "21247",
+      name: "Pied No1"
+    }, {
+      reference: "21246",
+      name: "Pied No2"
+    }];
     this.cameras = [{
       label: "camera rotative",
       nomCamera: "camera"
@@ -37,7 +43,7 @@
       that.menu[type].push(obj);
     };
 
-    this.selectForme = function (reference) {
+    this.selectElement = function (reference) {
       loadModel(reference);
     };
 

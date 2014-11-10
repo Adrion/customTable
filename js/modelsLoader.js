@@ -25,10 +25,11 @@ function initModelLoader(catalogueJSON) {
 function loadModel(refModel) {
   modelPath = modelsPaths[refModel];
 
+  console.log(modelPath);
   if (modelPath.type == 'plateau') {
-    loaderOBJ.load(modelsPath + '/PTELC1B12/model.obj', loaderTableCallback);
+    loaderOBJ.load(modelPath.urlModel, loaderTableCallback);
   } else if (modelPath.type == 'pied') {
-    loaderJSON.load(modelsPath + '/pieds/21862/model.json', loaderLegCallback);
+    loaderJSON.load(modelPath.urlModel, loaderLegCallback);
   }
 }
 
@@ -42,8 +43,15 @@ function loaderTableCallback(plt) {
 }
 
 function loaderLegCallback(jsonModel) {
-  var legs = [];
+  var legs = [],
+    test = 0;
 
+  //on efface les pieds présents
+  for (var j = 0; j < 4; j++) {
+    legsGroup.remove(legsGroup.children[0]);
+  };
+
+  //legsGroup.remove();
   for (var i = 0; i < 4; i++) {
     legs[i] = jsonModel.clone();
     legsGroup.add(legs[i]);
@@ -77,9 +85,6 @@ function loaderLegCallback(jsonModel) {
 
 function updateLegsPositions(plate) {
   var box3 = new THREE.Box3().setFromObject(plate);
-  console.log(box3);
-  console.log(plate);
-  console.log(legsGroup);
   legsGroup.scale.x = ((box3.size().x) / 2) / 60;
   legsGroup.scale.z = ((box3.size().z) / 2) / 60;
 

@@ -10,7 +10,7 @@ function initTable() {
   table.add(legsGroup);
 
   var loaderOBJ = new THREE.OBJLoader();
-  loaderOBJ.load(modelsPath + '/PTELC1B14/model.obj', loaderTableCallback);
+  loaderOBJ.load(modelsPath + '/PTELC1B12/model.obj', loaderTableCallback);
 
   //loadModel('PTELC1A');
   loadModel('21246');
@@ -23,8 +23,6 @@ function initTable() {
 
 function updateTablePosition(table) {
   var tableBoxV3 = new THREE.Box3().setFromObject(table);
-
-  console.log(tableBoxV3.size());
 
   table.position.y = -GROUND + tableBoxV3.size().y;
 }
