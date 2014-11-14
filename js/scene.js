@@ -15,13 +15,17 @@
 			  container = document.getElementById('container');
 			  scene = new THREE.Scene();
 
-			  renderer = new THREE.WebGLRenderer();
+			  renderer = new THREE.WebGLRenderer({
+			    "antialias": true
+			  });
+			  renderer.sortObjects = true;
 			  renderer.setSize(window.innerWidth, window.innerHeight);
 			  container.appendChild(renderer.domElement);
 
 			  stats = new Stats();
 			  stats.domElement.style.position = 'absolute';
 			  stats.domElement.style.top = '0px';
+			  stats.domElement.style.zIndex = '1000';
 			  container.appendChild(stats.domElement);
 
 			  //camera rotation
@@ -29,7 +33,7 @@
 			  cameras.push(camera);
 
 			  //camera 'libre'
-			  orbitcamera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 20000);
+			  orbitcamera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 10000);
 			  orbitcamera.position.set(-70, 6, -205);
 			  cameras.push(orbitcamera);
 			  scene.add(orbitcamera);
