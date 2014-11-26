@@ -12,6 +12,7 @@
 
 			function initScene() {
 
+			  //On initialise le moteur de rendu et on l'attache au canvas.
 			  container = document.getElementById('container');
 			  scene = new THREE.Scene();
 
@@ -22,6 +23,7 @@
 			  renderer.setSize(window.innerWidth, window.innerHeight);
 			  container.appendChild(renderer.domElement);
 
+			  //stats threeJS (fps etc.)
 			  stats = new Stats();
 			  stats.domElement.style.position = 'absolute';
 			  stats.domElement.style.top = '0px';
@@ -98,12 +100,13 @@
 
 			    // build the skybox Mesh
 			    skyboxWidth = 350;
-			  GROUND = skyboxWidth / 2;
-			  skyboxMesh = new THREE.Mesh(new THREE.BoxGeometry(skyboxWidth, skyboxWidth, skyboxWidth), cubeShader);
+			  GROUND = skyboxWidth / 2.4;
+			  skyboxMesh = new THREE.Mesh(new THREE.BoxGeometry(skyboxWidth, skyboxWidth / 1.2, skyboxWidth), cubeShader);
 
 			  // add it to the scene
 			  scene.add(skyboxMesh);
 
+			  // init des lumieres
 			  var light = new THREE.DirectionalLight(0xffffff, 2);
 			  light.position.set(1, 1, 1).normalize();
 			  scene.add(light);
@@ -112,6 +115,7 @@
 			  light.position.set(-1, -1, -1).normalize();
 			  scene.add(light);
 
+			  //on initialise la table.
 			  initTable();
 
 			  /*projector = new THREE.Projector();
@@ -120,12 +124,12 @@
 			  // Add OrbitControls so that we can pan around with the mouse.
 			  controls = new THREE.OrbitControls(orbitcamera, renderer.domElement);
 			  controls.maxDistance = 250;
+
 			  //set default camera
 			  activeCamera = orbitcamera;
 			}
 
 			function onWindowResize() {
-
 			  cameras.forEach(function (camera) {
 			    camera.aspect = window.innerWidth / window.innerHeight;
 			    camera.updateProjectionMatrix();
@@ -138,12 +142,16 @@
 			function animate() {
 			  requestAnimationFrame(animate);
 			  render();
+
+			  //mis a jour des controles des cameras
 			  controls.update();
 			  oculuscontrols.update();
+
 			  stats.update();
 			}
 
 			function render() {
+			  //gestion de la rotation de la camera
 			  if (pressedRight) {
 			    theta -= 3;
 			  } else if (pressedLeft) {
@@ -151,6 +159,8 @@
 			  } else {
 			    theta += 0.5;
 			  }
+
+			  //Si on utilise la camera stéréo on utilise le renderer avec l'effet.
 			  if (activeCamera == oculuscamera) {
 			    effect.render(scene, activeCamera);
 			    if (autoRotate) {
